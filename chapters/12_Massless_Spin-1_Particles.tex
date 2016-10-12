@@ -1,0 +1,198 @@
+\chapter{Massless Spin-1 Particles}
+We approach the quantum description of photons via classical electromagnetism, since we know via the correspondence principle that Maxwell's equations describe their dynamics.
+
+\section{Maxwell's equation and the classical potential}\label{sec:maxwell}
+For fields $\vec{E}$ and $\vec{B}$ in a vacuum (i.e.~not in material), Maxwell's equations are:
+\begin{enumerate}
+\item $\div\vec{E} = \rho$, the charge density (Poisson's equation);
+\item $\div\vec{B} = 0$, no magnetic monopoles;
+\item $\curl\vec{E} = -\pdv{\vec{B}}{t}$, Faraday's law;
+\item $\curl\vec{B} = \vec{j} + \pdv{\vec{E}}{t}$ where $\vec{j}$ is the charge current density (Amp{\'e}re's law).
+\end{enumerate}
+
+We define the vector potential such that
+\begin{equation}\boxed{
+\vec{B} = \curl \vec{A}
+}\end{equation}
+so Maxwell~II is automatically satisfied. Substituting into Maxwell~III,
+\begin{align}
+\curl\vec{E} &= -\pdv{t} \left( \curl \vec{A} \right) \nonumber \\
+&= -\curl \pdv{\vec{A}}{t}
+\end{align}
+\begin{equation}
+\Rightarrow \quad \curl \left( \vec{E} + \pdv{\vec{A}}{t} \right) = 0.
+\end{equation}
+The solution to this equation defines the scalar potential,
+\begin{equation}
+\vec{E} + \pdv{\vec{A}}{t} = -\grad \phi.
+\end{equation}
+Substituting into Maxwell~I,
+\begin{align}
+\rho &= -\laplacian{\phi} - \pdv{t} {\div\vec{A}} \label{eq:MaxwellDensity}
+\end{align}
+Now consider Maxwell~IV. The left-hand side is
+\begin{align}
+\curl \vec{B} &= \curl(\curl{\vec{A}}) \\
+&= \grad(\div\vec{A}) - \laplacian{\vec{A}} \label{eq:Maxwell4LHS}
+\end{align}
+and the right-hand side is
+\begin{align}
+\vec{j} + \pdv{\vec{E}}{t} &= \vec{j} - \pdv{t}\left(\grad{\phi} + \pdv{\vec{A}}{t}\right) \nonumber \\
+&= \vec{j} - \grad{\pdv{\phi}{t}} - \pdv[2]{\vec{A}}{t} \label{eq:Maxwell4RHS}.
+\end{align}
+Equating \eqref{eq:Maxwell4LHS} and \eqref{eq:Maxwell4RHS} gives an expression for the 3-current,
+\begin{equation}
+\vec{j} = \pdv[2]{\vec{A}}{t} - \laplacian{\vec{A}} + \grad(\pdv{\phi}{t} + \div\vec{A}).
+\end{equation}
+Also, \eqref{eq:MaxwellDensity} can be written
+\begin{equation}
+\rho = \pdv[2]{\phi}{t} - \laplacian{\phi} - \pdv{t}(\pdv{\phi}{t} + \div\vec{A})
+\end{equation}
+so we can write Maxwell's equations in covariant form:
+\begin{equation}\boxed{
+j^\mu = \partial^2 A^\mu - \partial^\mu \partial_\nu A^\nu \label{eq:MaxwellCovariant}
+}\end{equation}
+where the 4-current is $j^\mu = \mqty(\rho \\ \vec{j})$ and the 4-potential is $A^\mu = \mqty(\phi \\ \vec{A})$.
+
+\section{Gauge transformations and the Lorenz condition}
+Equation \eqref{eq:MaxwellCovariant} is invariant under gauge transformations that have the form
+\begin{equation}
+A^\mu \rightarrow A^\mu + \partial^\mu f
+\end{equation}
+for some scalar $f$; this is easily verified by direct substitution. For a global gauge transformation $f$ is constant but for local gauge transformations $f$ can be a function of the coordinates.
+
+This degree of freedom may be frozen out by the choice of a particular `gauge'. The Lorenz\footnote{The Lorenz gauge is named after Ludwig Lorenz and is Lorentz invariant, named after the work of Hendrik Lorentz.} gauge is the most natural choice with the condition
+\begin{equation}
+\partial_\mu A^\mu = 0 \label{eq:LorentzGauge}
+\end{equation}
+such that all electrodynamics (Maxwell's equations) are simply described by
+\begin{equation}\boxed{
+\partial^2 A^\mu = j^\mu.
+}\end{equation}
+
+\subsection{Polarisation states of a free photon}
+Since the 4-potential $A^\mu$ describes the photon, there are 4 possible orthogonal polarisations available to it. However, the Lorenz gauge removes one degree of freedom.
+
+For a free photon, we have that the charge current $j^\mu = 0$. Therefore,
+\begin{equation}
+\partial^2 A^\mu = 0
+\end{equation}
+with polarised plane wave solutions $A^\mu = \epsilon^\mu_i \, e^{-ipx}$ where $\epsilon^\mu_i$ are the polarisation 4-vectors. Therefore, the Lorenz condition becomes
+\begin{equation}
+p_\mu \epsilon^\mu_i = 0.
+\end{equation}
+This has removed one degree of freedom from the available polarisation states.
+
+Now consider the gauge transformation
+\begin{equation}
+A^\mu \rightarrow A^\mu + \partial^\mu\left( i\alpha e^{-ipx} \right).
+\end{equation}
+Then
+\begin{equation}
+\partial_\mu \partial^\mu \left( \alpha e^{-ipx} \right) = -i \alpha p^2 e^{-ipx} = 0
+\end{equation}
+since $p^2 = 0$ for a free photon (it's massless). Therefore the photon is unchanged by such a gauge transformation, which can be written
+\begin{equation}
+\epsilon_i^\mu \rightarrow \epsilon_i^\mu + \alpha p^\mu.
+\end{equation}
+
+We are therefore free to make the gauge choice $\epsilon_i^0 = \epsilon_i^3 = 0$ (with the spatial axes chosen such that $p^0 = p^3 = E$) which corresponds to $\alpha = -\epsilon_\mu^i p^\mu / \epsilon_\nu^i \epsilon_i^\nu$.
+
+For a free photon with 4-momentum $p = (E,\,0,\,0,\,E)^T$, the surviving polarisation states are
+\begin{equation*}
+\epsilon_1^\mu = \mqty(0 \\ 1 \\ 0 \\ 0) \quad \text{and} \quad \epsilon_2^\mu = \mqty(0 \\ 0 \\ 1 \\ 0)
+\end{equation*}
+which can be combined to give circular polarisations
+\begin{equation*}
+\epsilon_R^\mu = \frac{1}{\sqrt{2}} (\epsilon_1^\mu + i\epsilon_2^\mu) \quad \text{and} \quad \epsilon_L^\mu = \frac{1}{\sqrt{2}} (\epsilon_1^\mu - i\epsilon_2^\mu)
+\end{equation*}
+which correspond to the $\pm 1$ helicity photon.
+
+In summary, a free spin-1 particle loses one degree of freedom under gauge fixing in electrodynamics. A second gauge fixing removes another degree of freedom, but this relies on the fact that the particle is both massless and free. Therefore, the free photon has only two possible transverse polarisations. In contrast, a virtual photon may also have timelike or longitudinal polarisation.
+
+\section{Virtual photons and the photon propagator}
+We saw when discussing the electrodynamics of scalars that the potential \eqref{eq:potential}, $A^\mu = -g^{\mu\nu}j_\nu / q^2$, is a solution of Maxwell's equations in the Lorenz gauge, $\partial^2 A^\mu = j^\mu$. There, this was verified by substitution but now it will be derived via the propagator approach.
+
+As a functional of the spatial propagator, $G(x^\prime; x)$, the potential is given by
+\begin{equation}
+A^\mu(x^\prime) = \int G(x^\prime; x) \, j^\mu(x) \, \dd[4]{x}.
+\end{equation}
+Applying the d'Alambertian differential operator, the left-hand side of the Lorenz condition may be expressed
+\begin{align}
+\partial^2 A^\mu(x^\prime) &= \int  \left[ \partial^2 G(x^\prime; x) \right] \, j^\mu(x) \, \dd[4]{x}
+\end{align}
+where we have used that $\partial_\mu j^\mu = 0$ since the 4-current should be conserved (not explicitly shown for spin-1). The right hand side is
+\begin{equation}
+j^\mu = \int \delta^{(4)}(x^\prime - x) \, j^\mu(x) \, \dd[4]{x}.
+\end{equation}
+Therefore, we have that
+\begin{equation}
+\partial^2 G(x^\prime; x) = \delta^{(4)}(x^\prime - x).
+\end{equation}
+Now Fourier transform into momentum-space using $q^\mu = -i\partial^\mu$,
+\begin{equation}
+\frac{1}{(2\pi)^4} \int (iq)^2 \, \mathcal{G}(q) \, e^{-iq(x^\prime - x)} \, \dd[4]{q}  = \frac{1}{(2\pi)^4} \int e^{-iq(x^\prime - x)} \, \dd[4]{q}
+\end{equation}
+from which we see that the momentum-space propagator is $\mathcal{G}(q) = -1/q^2$. Then the potential is
+\begin{equation}
+A^\mu(x) = \frac{-j^\mu(x)}{q^2} = \frac{-g^{\mu\nu} j_\nu(x)}{q^2}
+\end{equation}
+By convention, we actually define $\boxed{\mathcal{G}(q) = -i g^{\mu\nu}/q^2}$.
+
+\subsection{Momentum-space propagators}
+Generalising the above, the momentum-space propagator may be obtained by inverting the equation of motion for a free particle and multiplying by $-i$.
+
+The Klein-Gordon equation gives $(\partial^2 + m^2)\psi = 0$ for free scalars. Therefore, the propagator is
+\begin{align}
+\frac{-i}{(iq)^2 + m^2} = \frac{i}{q^2-m^2}.
+\end{align}
+
+Now consider the Dirac equation for free spin-$\frac{1}{2}$ particles. From \eqref{eq:covDirac}, the equation of motion is
+\begin{equation*}
+(i \gamma^\mu \partial_\mu - m)\psi = 0.
+\end{equation*}
+Then, using that $i\partial_\mu = p_\mu$ (note the lower-index form), the propagator is
+\begin{align}
+\frac{-i}{\gamma^\mu q_\mu - m} &= \frac{i}{\gamma^\mu q_\mu - m} \nonumber \\
+&= \frac{i\,(\fsl{q}+m)}{(\fsl{q}-m)(\fsl{q}-m)} \nonumber \\
+&= \frac{i \, (\fsl{q}+m)}{q^2 - m^2} \nonumber \\
+&= i \frac{\sum u_S \overline{u}_{S^\prime}}{q^2 - m^2}
+\end{align}
+where on the third line we have used that, from the properties of the $\gamma$-matrices, $\fsl{q}^2 = \gamma^\mu q_\mu \gamma^\nu q_\nu = q^2$ and the spinor completeness relation has been used to obtain the last line. The sum is over all possible spins, $S$ and $S^\prime$.
+
+\section{Longitudinal and timelike virtual photons}
+Since we cannot imply the Lorenz gauge condition, virtual photons have four available polarisation states: two transverse, longitudinal, and timelike.
+
+\subsection{Coulomb's law}
+
+The amplitude for photon exchange between two currents is given by
+\begin{align}
+A &= j_\mu^A \left( \frac{-ig^{\mu\nu}}{q^2} \right) j^\nu_B \nonumber \\
+&= j_\mu^A \left( \frac{-i}{q^2} \right) j^\mu_B.
+\end{align}
+Now the momentum exchange is $q^\mu$. But we know that the four-current is conserved by QED and therefore $q_\mu j^\mu = 0$.
+
+We are free to choose that the photon travels along the $z$- or $t$-axes, so $q_1 j^1 = q_2 j^2 = 0$. Then the continuity equation becomes
+\begin{equation}
+q_\mu j^\mu = q_0 j^0 - q_3 j^3 = 0.
+\end{equation}
+Substituting back into the amplitude,
+\begin{align}
+A &= \frac{-i}{q^2} \left[j_0^A j^0_B - j_3^A j^3_B\right] \nonumber \\
+&= \frac{-i}{q^2} \left[j_0^A j^0_B - \frac{q_0^2}{q_3^2}(j_0^A j^0_B)\right] \nonumber \\
+&= \frac{-i}{q_0^2 - q_3^2} \left[ \frac{q_3^2 - q_0^2}{q_3^2} j_0^A j^0_B \right] \nonumber \\
+&= i \, \frac{j_0^A j^0_B}{q_3^2}.
+\end{align}
+This is Coulomb's law for electromagnetism in 3-momentum space.
+
+\subsection{Completeness relation}
+For free photons, the two allowed transverse polarisations give the completeness relation
+\begin{equation}
+\sum_{P, Q} \epsilon^P_\mu \epsilon_Q^\nu = \mqty(0,\,1,\,0,\,0) \mqty(0\\1\\0\\0) + \mqty(0,\,0,\,1,\,0) \mqty(0\\0\\1\\0) = \mqty(1&0\\0&1) = I_2.
+\end{equation}
+
+In the case of virtual photons with four allowed polarisations, this becomes
+\begin{equation}
+\sum_{P, Q} \epsilon^P_\mu \epsilon_Q^\nu = \mqty(\dmat[0]{-1,1,1,1}) = -g^{\mu\nu}
+\end{equation}
+which embeds the completeness relation for real photons.

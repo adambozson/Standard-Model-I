@@ -1,0 +1,81 @@
+\chapter{Relativistic spin-0 particles}
+\section{The Klein-Gordon equation}
+The Schr{\"o}dinger equation is the quantum mechanical equivalent of the classical $E = p^2/2m$. Now we want a relativistic version. Start from the relationship between energy, momentum, and mass,
+\begin{equation}
+E^2 - p^2 = m^2.
+\end{equation}
+Replacing the appropriate values with operators,
+\begin{equation*}
+E \rightarrow i \pdv{t}, \quad p \rightarrow -i \vec{\nabla}
+\end{equation*}
+and applying them to some general wavefunction,
+\begin{equation}
+\left( -\pdv[2]{t} + \nabla^2 \right)\psi = m^2 \psi.
+\end{equation}
+Rearranging and using equation \eqref{eq:nablaSquared} gives the Klein-Gordon equation
+\begin{equation}\boxed{
+\left( \partial^2 + m^2 \right)\psi = 0\label{eq:KleinGordon}
+}.
+\end{equation}
+This is the fully relativistic equation of motion for spin-0 particles.
+
+\subsection{4-current density}
+We now wish to derive the probability 4-current from the Klein-Gordon equation. Taking the complex conjugate of \eqref{eq:KleinGordon} and multiplying by $\psi$ gives
+\begin{equation}
+\psi \left( \partial^2 + m^2 \right)\psi^* = 0\label{eq:KG1}.
+\end{equation}
+Similarly, multiplying \eqref{eq:KleinGordon} by $\psi^*$ gives
+\begin{equation}
+\psi^* \left( \partial^2 + m^2 \right)\psi = 0\label{eq:KG2}.
+\end{equation}
+Subtracting \eqref{eq:KG1} from \eqref{eq:KG2} and multiplying by $i$,
+\begin{align}
+i\psi^*\partial^2\psi - i\psi\partial^2\psi^* = 0 \\
+\Rightarrow\quad \pdv{t} \left( i\psi^*\pdv{\psi}{t} - i\pdv{\psi^*}{t}\psi \right) - \vec{\nabla}\cdot\left( i\psi^* \vec{\nabla}\psi - i(\vec{\nabla}\psi)\psi^* \right) = 0
+\end{align}
+This result is a continuity equation,
+\begin{equation}
+\partial_\mu j^\mu = 0
+\end{equation}
+for the 4-current density
+\begin{equation}
+j^\mu = i\psi^* \partial^\mu \psi - i\psi \partial^\mu \psi^*
+\end{equation}
+
+\subsection{Application to a plane wave}
+Consider a particle with wavefunction $\phi = \mathcal{N}e^{-iPX}$. Applying the above definition of 4-current density gives the values
+\begin{align}
+\rho = j^0 = 2\abs{\mathcal{N}}^2 \, E  \\
+\vec{j} = 2\abs{\mathcal{N}}^2 \, \vec{p}.
+\end{align}
+That $\rho$ is proportional to $E$ is to be expected. Under a Lorentz boost the volume element transforms as
+\begin{equation*}
+\dd[3]{\vec{x}} \rightarrow \frac{\dd[3]{\vec{x}}}{\gamma}
+\end{equation*}
+so in order to preserve $\rho \dd[3]{\vec{x}}$, $\rho$ must transform as $\rho\rightarrow \gamma\rho$, in the same way energy does.
+
+If the covariant nomalization to $2E$ particles per unit volume is used, the result is that $\rho = 1$.
+
+\section{Negative energy particles and the Fenyman-Stueckelberg interpretation}
+For the Klein-Gordon equation to be an accurate description of spin-0 particles, it should be able to describe antiparticles. Indeed, the Klein-Gordon equation does allow for particles with negative energy, i.e.~the negative solution of
+\begin{equation}
+E_\pm = \pm\sqrt{p^2 + m^2}.
+\end{equation}
+There are some problems associated with this. Firstly, the existence of negative energy states means that the energy of a particle can always be lowered. Secondly, the $E_-$ solutions are associated with a negative probability density $\rho$, which doesn't make sense and is not allowed.
+
+Pauli and Weisskopf showed that it is possible to have a negative energy solution of the Klein-Gordon equation if the scalar electron charge $-e$ is included in $j^\mu$ and it is interpreted as a charge-current density,
+\begin{equation}
+j^\mu = -ie\left(\psi^* \partial^\mu \psi - i\psi \partial^\mu \psi^*\right).
+\end{equation}
+Now $\rho=j^0$ represents the charge density which is allowed to be negative.
+
+Now that the theory has been fixed to allow the $E_-$ particles, we need an interpretation for them. The Feynman-Stueckelberg interpretation states that the negative energy states correspond to antiparticles. Consider the 4-charge-current of a scalar electron with a plane wavefunction,
+\begin{equation}
+j^\mu (\Pelectron) = -2e\abs{\mathcal{N}}^2\, \mqty(E \\ \vec{p}).
+\end{equation}
+In the same way, a positron has the current
+\begin{align}
+j^\mu (\Ppositron) &= 2e\abs{\mathcal{N}}^2\, \mqty(E \\ \vec{p})\\
+&= -2e\abs{\mathcal{N}}^2\, \mqty(-E \\ -\vec{p}).
+\end{align}
+This is the same as for an electron with $-E$, $-\vec{p}$. So far as a system is concerned, the emission of a positron with energy $E$ is the same as the absorption of an electron with energy $-E$. In other words, positive-energy antiparticles travelling forwards in time are negative-energy particles travelling backwards in time. This gives the $E_-$ solutions an interpretation.

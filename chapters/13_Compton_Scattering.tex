@@ -1,0 +1,169 @@
+\chapter{Compton Scattering}
+There are two leading order diagrams for the process \HepProcess{\Pphoton \Pe \to \Pphoton \Pe}, shown in Figure \ref{fig:compton}. Note the similarity to electron-positron annihilation (rotate by $90\si{\degree}$).
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\include{figures/compton_s}
+\caption{s-channel\label{fig:compton_s}}
+\end{subfigure}\hspace{40pt}
+\begin{subfigure}[b]{0.3\textwidth}
+\include{figures/compton_u}
+\caption{u-channel\label{fig:compton_u}}
+\end{subfigure}
+\caption{Diagrams for the Compton scattering process \HepProcess{\Pphoton \Pe \to \Pphoton \Pe}.\label{fig:compton}}
+\end{figure}
+
+The total scattering probability is given by $\abs{\mathcal{M}}^2$ where $\mathcal{M} = \mathcal{M}_s + \mathcal{M}_u$, such that $\abs{\mathcal{M}}^2 = \abs{\mathcal{M}_s}^2 + \abs{\mathcal{M}_u}^2 + 2\operatorname{Re}(\mathcal{M}_s^*\mathcal{M}_u)$.
+\section{s-channel}
+Consider the s-channel diagram \ref{fig:compton_s} as a double scattering process. The scattering amplitude is given by
+\begin{align}
+i\mathcal{M}_s &= \int \int \phi^*(x_2) V(x_2) G_0(x_2;x_1) V(x_1) \phi(x_1) \, \dd[4]{x_1} \, \dd[4]{x_2} \\
+&= \overline{u}(p^\prime)\,(-ie\gamma^\mu)\,\epsilon_\mu^*(k^\prime) \left(\frac{i(\fsl{p}+\fsl{k}+m)}{(p+k)^2-m^2} \right)(-ie\gamma^\nu)\,\epsilon_\nu(k)\, u(p)
+\end{align}
+where the second line can be obtained using Feynman rules.
+
+Now in the massless limit where $m\rightarrow0$,
+\begin{equation}
+\mathcal{M}_s = \frac{-e^2}{s} \, \overline{u}(p^\prime) \, \gamma^\mu\epsilon_\mu^*(k^\prime) \, (\fsl{p} + \fsl{k})\, \gamma^\nu\epsilon_\nu(k) \, u(p) \label{eq:s_channel_amplitude}
+\end{equation}
+hence
+\begin{align}
+\abs{\mathcal{M}_s}^2 &= \frac{e^4}{s^2}\left[\left( \overline{u}(p^\prime) \, \gamma^\mu\epsilon_\mu^*(k^\prime) \, (\fsl{p} + \fsl{k})\, \gamma^\nu\epsilon_\nu(k) \, u(p)\right)\left( \overline{u}(p) \, \gamma^\rho\epsilon_\rho(k^\prime) \, (\fsl{p} + \fsl{k})\, \gamma^\sigma\epsilon_\sigma^*(k) \, u(p^\prime)\right) \right] \nonumber \\
+&= \frac{e^4}{s^2}\left[ \epsilon_\rho(k^\prime)\,\epsilon_\mu^*(k^\prime)\,\epsilon_\nu(k)\,\epsilon_\sigma^*(k) \, \overline{u}(p^\prime)\,\gamma^\mu\,(\fsl{p}+\fsl{k})\,\gamma^\nu \, u(p) \, \overline{u}(p)\,\gamma^\rho\,(\fsl{p}+\fsl{k}) \, \gamma^\sigma \, u(p^\prime) \right]
+\end{align}
+where in the last line all the (Dirac scalar) polarisation vectors have been collected together. We now employ the completeness relation,
+\begin{equation}
+\sum \epsilon_\mu(p) \epsilon_\nu^*(p) = -g_{\mu\nu}
+\end{equation}
+where the sum is over all polarisations of the photon. Performing the sum over spins using the electron completeness relation \eqref{eq:completeness} ($\sum u\overline{u} = \fsl{p}+m$) and averaging over all initial spin states (divide by 4),
+\begin{align}
+\abs{\mathcal{M}_s}^2 &= \frac{e^4}{4s^2} \Tr \left[ g_{\rho\mu} \, g_{\nu\sigma} \, (\fsl{p^\prime}+m)\,\gamma^\mu\,(\fsl{p}+\fsl{k})\,\gamma^\nu \, (\fsl{p}+m) \,\gamma^\rho\,(\fsl{p}+\fsl{k}) \, \gamma^\sigma \right] \\
+&= \frac{e^4}{4s^2}\Tr\left[(\fsl{p^\prime}+m)\,\gamma^\mu\,(\fsl{p}+\fsl{k})\,\gamma^\nu \, (\fsl{p}+m) \,\gamma_\mu\,(\fsl{p}+\fsl{k}) \, \gamma_\nu \right]\\
+&= \frac{e^2}{s^2}\Tr[\fsl{p^\prime}\,(\fsl{p}+\fsl{k})\,\fsl{p}\,(\fsl{p}+\fsl{k})]
+\end{align}
+where to get the final line the electron mass terms have been neglected and the relation $\gamma^\mu\fsl{p}\gamma_\mu = -2\fsl{p}$ used. Now use the fact that $p\cdot p = m^2$ is small to neglect the terms containing $\fsl{p}^2$ or higher and use trace theorems to expand,
+\begin{align}
+\abs{\mathcal{M}_s}^2 &= \frac{e^2}{s^2}\Tr[\fsl{p^\prime}\,\fsl{k}\,\fsl{p}\,\fsl{k}] \\
+&= \frac{4e^4}{s^2}\left[ (p^\prime \cdot k)(p \cdot k) - (p^\prime \cdot p)(k \cdot k) - (p^\prime \cdot k)(k \cdot p) \right] \\
+&= \frac{4e^2}{s^2}\left[ 2(p^\prime \cdot k)(p \cdot k) \right]
+\end{align}
+where the last equation comes from the fact that $k \cdot k =0$ for the massless photon.
+
+Now recall the Mandelstam variables,
+\begin{equation*}
+s = (k+p)^2 = (k^\prime + p^\prime)^2, \quad t = (k-k^\prime)^2 = (p-p^\prime)^2, \quad u = (k-p^\prime)^2 = (p-k^\prime)^2.
+\end{equation*}
+In the massless limit, we can approximate,
+\begin{equation}
+s = (k+p)^2 \approx 2k \cdot p, \quad u = (k-p^\prime)^2 \approx -2p^\prime \cdot k.
+\end{equation}
+Substituting into the result from above,
+\begin{equation}
+\abs{\mathcal{M}_s}^2 = 2e^4\frac{-u}{s}.
+\end{equation}
+
+\section{u-channel}
+For the u-channel, the same steps yield the swapping of the $s$ and $u$ variables,
+\begin{equation}
+\abs{\mathcal{M}_u}^2 = 2e^4\frac{-s}{u}.
+\end{equation}
+
+\section{Interference term}
+Now the remaining term is $2\operatorname{Re}(\mathcal{M}_s^*\mathcal{M}_u)$. Taking the Hermitian conjugate of \eqref{eq:s_channel_amplitude},
+\begin{equation}
+\mathcal{M}_s^* = -\frac{e^2}{s} \, \overline{u}(p) \, \gamma^\mu \, \epsilon_\mu(k^\prime) \, (\fsl{p}+\fsl{k}) \, \gamma^\nu \, \epsilon_\nu^*(k) \, u(p^\prime).
+\end{equation}
+For the u-channel matrix element, we simply swap $k \leftrightarrow -k^\prime$ so that $s \leftrightarrow u$,
+\begin{equation}
+\mathcal{M}_u = -\frac{e^2}{u} \, \overline{u}(p^\prime) \, \gamma^\rho \, \epsilon_\rho^*(-k) \, (\fsl{p} - \fsl{k^\prime}) \, \gamma^\sigma \, \epsilon_\sigma(-k^\prime) \, u(p).
+\end{equation}
+Multiplying these together,
+\begin{align}
+\mathcal{M}_s^*\mathcal{M}_u &= \frac{e^4}{su}\left[ \overline{u}(p) \, \gamma^\mu \, \epsilon_\mu(k^\prime) \, (\fsl{p}+\fsl{k}) \, \gamma^\nu \, \epsilon_\nu^*(k) \, u(p^\prime) \, \overline{u}(p^\prime) \, \gamma^\rho \, \epsilon_\rho^*(-k) \, (\fsl{p} - \fsl{k^\prime}) \, \gamma^\sigma \, \epsilon_\sigma(-k^\prime) \, u(p) \right] \nonumber \\
+&= \frac{e^4}{su} \frac{1}{4} \Tr[g_{\mu\rho} \, g_{\nu\sigma} \, (\fsl{p}+m) \, \gamma^\mu \, (\fsl{p}+\fsl{k}) \, \gamma^\nu \, (\fsl{p^\prime} + m) \, \gamma^\rho \, (\fsl{p} - \fsl{k^\prime}) \, \gamma^\sigma] \nonumber \qquad \text{(sum-average and completeness relations)} \\
+&= \frac{e^4}{su} \frac{1}{4} \Tr[(\fsl{p}+m)\,\gamma^\mu\,(\fsl{p}+\fsl{k}) \, \gamma^\nu \, (\fsl{p^\prime}+m) \, \gamma_\mu \, (\fsl{p}-\fsl{k^\prime})\gamma_\nu] \nonumber \qquad\text{(index gynmastics)}\\
+&\approx \frac{e^4}{su} \frac{1}{4} \Tr[\fsl{p}\,\gamma^\mu\,(\fsl{p}+\fsl{k})\,\gamma^\nu\,\fsl{p^\prime}\,\gamma_\mu\,(\fsl{p}-\fsl{k^\prime})\,\gamma_\nu] \nonumber \qquad \text{(ignore $m$)} \\
+&= \frac{e^4}{su} \frac{1}{4} \Tr[-2(\fsl{p}+\fsl{k}) \, \gamma^\mu \, \fsl{p} \, \fsl{p^\prime} \, \gamma_\mu \, (\fsl{p} - \fsl{k^\prime})] \nonumber \qquad \text{($\gamma_\nu \, \fsl{a} \, \fsl \, {b} \, \gamma^\nu = -2 \, \fsl{b} \, \fsl{a} \, \Rightarrow \, \gamma_\nu\,\fsl{a}\,\gamma^\mu\,\fsl{b}\,\gamma^\nu = -2\,\fsl{b}\,\gamma^\mu\,\fsl{a}$)}\\
+&=\frac{-2e^4}{su} \Tr[(\fsl{p}+\fsl{k})(p \cdot p^\prime)(\fsl{p}-\fsl{k^\prime})] \nonumber \qquad \text{($\gamma^\mu \, \fsl{p} \, \fsl{p^\prime} \, \gamma_\mu = 4 p \cdot p^\prime$)} \\
+&= \frac{-2e^4}{su} \, (p \cdot p^\prime) \, 4\left[(p+k)\cdot(p-k^\prime)\right] \nonumber \qquad \text{($\Tr[\fsl{a}\,\fsl{b}] = 4a \cdot b$)} \\
+&= \frac{-8e^4}{su} \, (p \cdot p^\prime) \left( p \cdot p + k \cdot p - p \cdot k^\prime - k \cdot k^\prime \right)
+\end{align}
+Now use that
+\begin{equation}
+t \approx -2p \cdot p^\prime \approx -2k \cdot k^\prime, \quad s \approx 2p \cdot k, \quad u \approx -2p \cdot k^\prime
+\end{equation}
+and neglect the $p \cdot p = m^2$ term,
+\begin{align}
+\mathcal{M}_s^*\mathcal{M}_u &= \frac{-8e^4}{su} \frac{-t}{2} \left( \frac{s}{2}  + \frac{u}{2} + \frac{t}{2} \right) \nonumber \\
+&= 2e^4 \frac{t}{su}(s+u+t)
+\end{align}
+Hence the interference contribution to the cross-section is
+\begin{equation}
+2\operatorname{Re}(\mathcal{M}_s^*\mathcal{M}_u) = 2e^4 \frac{2t}{su} (s+u+t).
+\end{equation}
+
+\section{Cross-section}
+From \eqref{eq:madelstamSum} we know that $s+u+t = m^2 \approx 0$ for real  (i.e.~not virtual) photons. This means that, for a real photon scattering from an approximately massless electron, the s- and u-channel diagrams have no interference.
+
+Hence the differential cross-section is given by
+\begin{align}
+\dv{\sigma}{\Omega} &= \frac{1}{64\pi^2 s} \, 2e^4 \left( \frac{-u}{s} + \frac{-s}{u} \right)\label{eq:comptonCrossSection}
+\end{align}
+
+Conversely, for a virtual photon $s+u+t=Q^2$ giving a differential cross-section
+\begin{equation}
+\dv{\sigma}{\Omega} = \frac{1}{64\pi^2 s} \, 2e^4 \left( \frac{-u}{2} + \frac{-s}{u} + \frac{2t}{su} Q^2 \right)
+\end{equation}
+
+\subsection{\HepProcess{\Pelectron\Ppositron\to\Pphoton\Pphoton} cross-section}
+Note that rotating the diagrams in Figure \ref{fig:compton} by $90\si{\degree}$ yields all allowed diagrams for \HepProcess{\Pelectron\Ppositron\to\Pphoton\Pphoton}. Under this transformation we simply swap $s$ and $t$ in the scattering amplitude calculation, so the cross-section in the case real photons is
+\begin{equation}
+\dv{\sigma(\HepProcess{\Pelectron\Ppositron\to\Pphoton\Pphoton})}{\Omega} = \frac{1}{64\pi^2 s} 2e^4 \left( \frac{-u}{t} + \frac{-t}{u} \right).
+\end{equation}
+
+\subsection{Total cross-section when $m \rightarrow 0$, $s \rightarrow \infty$}
+Taking large $s$, \eqref{eq:comptonCrossSection} becomes
+\begin{equation}
+\left. \dv{\sigma}{\Omega}\right|_{s\rightarrow\infty} = \frac{1}{64\pi^2}\frac{-2e^4}{u}.
+\end{equation}
+Substituting $u \approx -2p \cdot k^\prime$,
+\begin{equation}
+\left. \dv{\sigma}{\Omega}\right|_{s\rightarrow\infty} = \frac{1}{64\pi^2} \frac{e^4}{p\cdot k^\prime}\label{eq:compton_cross_section_limit}
+\end{equation}
+
+Now we choose to evaluate the cross-section in the centre-of-mass frame, where
+\begin{equation*}
+p = \mqty(E_e \\ \vec{p}), \quad k^\prime = \mqty(E_\gamma \\ \vec{k}^\prime).
+\end{equation*}
+Then
+\begin{align}
+p\cdot k^\prime &= E_e E_\gamma - \vec{p}\cdot\vec{k}^\prime \nonumber \\
+&= E_e E_\gamma + \abs{\vec{p}}E_\gamma\cos\theta
+\end{align}
+where we have used that $\vec{p}\cdot\vec{k}^\prime = -\vec{p}\cdot\vec{p}^\prime = -\abs{\vec{p}}\abs{\vec{p}^\prime}\cos\theta = -\abs{\vec{p}}E_\gamma\cos\theta$. Now in the small mass case, expand $E_e$
+\begin{equation}
+E_e = \left( \abs{\vec{p}}^2 + m^2 \right)^\frac{1}{2} \approx \abs{\vec{p}}\left( 1 + \frac{m^2}{2\abs{\vec{p}}^2} \right),
+\end{equation}
+giving
+\begin{align}
+p\cdot k^\prime &= \abs{\vec{p}}\left( 1 + \frac{m^2}{2\abs{\vec{p}}^2} \right)E_\gamma + \abs{\vec{p}}E_\gamma\cos\theta \nonumber \\
+&= \abs{\vec{p}}E_\gamma \left( 1 + \cos\theta + \frac{m^2}{2\abs{\vec{p}}^2} \right)
+\end{align}
+Now in the massless electron case, we have that $\abs{\vec{p}} = \sqrt{s}/2 = E_\gamma$. Therefore,
+\begin{equation}
+p\cdot k^\prime = \frac{s}{4} \left( 1 + \cos\theta + \frac{2m^2}{s} \right)
+\end{equation}
+up to first order in $m^2$. Substituting this result into \eqref{eq:compton_cross_section_limit}
+\begin{align}
+\left.\dv{\sigma}{\Omega}\right|_{s\rightarrow\infty} &= \frac{e^4}{64\pi^2}\frac{4}{s\left( 1 + \cos\theta + \frac{2m^2}{s} \right)} \\
+&= \frac{\alpha^2}{s\left( 1 + \cos\theta + \frac{2m^2}{s} \right)}
+\end{align}
+using $\alpha = e^2/4\pi$. This is easily integrable,
+\begin{align}
+\sigma &= \frac{\alpha^2}{s} \int \frac{\dd{\Omega}}{1 + \cos\theta + \frac{2m^2}{s}} \nonumber \\
+&= \frac{2\pi\alpha^2}{s}\int\limits_{-1}^{1}\frac{\dd{\cos\theta}}{1 + \cos\theta + \frac{2m^2}{s}}\nonumber \\
+&= \frac{2\pi\alpha^2}{s} \ln\left[1 + \cos\theta + \frac{2m^2}{s}\right]_{-1}^{1} \nonumber\\
+&= \frac{2\pi\alpha^2}{s} \ln\left[ \frac{2 + \frac{2m^2}{s}}{\frac{2m^2}{s}} \right]\nonumber\\
+&= \frac{2\pi\alpha^2}{s}\ln\left[\frac{s}{m^2}+1\right]\nonumber\\
+&\approx \frac{2\pi\alpha^2}{s}\ln\left(\frac{s}{m^2}\right).
+\end{align}

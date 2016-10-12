@@ -1,0 +1,94 @@
+\chapter{Calculating Amplitudes}
+There are a number of possible approaches to calculating an amplitude for a given interaction. These include relativistic generalisations of the Born approximation (Feynman-Stueckelberg) or perturbation theory (Halzen and Martin), and the mathematically heavy canonical field theory or the path integral approach. The idea of the propagator is common to some of these approaches and this is what we will consider in our treatment of amplitude calculations.
+
+\section{Single scattering potential}
+\begin{figure}[hb]
+\centering
+\include{figures/singleScatter}
+\caption{Scattering of a plane wave off a localised potential $V$.\label{fig:singleScatter}}
+\end{figure}
+
+
+Consider a particle $\psi(\vec{r},t)$ that scatters off some potential $V(\vec{r},t)$, where $V$ acts only at a position $\vec{r_1}$ and for a short time $\Delta t$. In the interaction picture the Schr{\"o}dinger equation is
+\begin{equation}
+\left(\hat{H}_0 + V\right)\psi(\vec{r},t) = i \pdv{\psi}{t}
+\end{equation}
+where the interaction is large, $V \gg \hat{H}_0$. Ignoring the free $\hat{H}_0$ term and solving the separable differential equation,
+\begin{equation}
+i\int\limits_{\phi}^{\phi+\Delta\psi} \dd{\psi} = \int\limits_{-\infty}^{+\infty} V(\vec{r},t)\, \psi(\vec{r},t) \, \dd{t}
+\end{equation}
+where $\phi$ is the original, unscattered plane wavefunction and $\psi=\phi+\Delta\psi$ is the scattered wavefunction. Since the potential $V$ only acts at position $\vec{r_1}$ and has constant value $V$ for time $\Delta t$, this evaluates to give
+\begin{align}
+\Delta\psi(\vec{r_1},t_1) &= -i V(\vec{r_1},t_1) \, \psi(\vec{r_1},t_1) \, \Delta{t} \\
+&= -i V({x}_1) \left[ \phi({x}_1) + \Delta\psi({x}_1) \right] \Delta{t} \\
+&\approx -iV(x_1) \, \phi(x_1) \, \Delta t\label{eq:scatter}
+\end{align}
+where ${x}_1$ is the event at $(\vec{r_1}, t_1)$.
+
+We wish to know the wavefunction after scattering at some event $x^\prime$. Using the formalism of Green's functions,
+\begin{equation}\boxed{
+\Psi(x^\prime) = i \int G(x^\prime, x) \, \Psi(x) \, \dd[3]{\vec{r}} \quad \text{for $t^\prime > t$}
+}\end{equation}
+where $G(x^\prime, x)$ is the Green's function of the Schr{\"o}dinger equation, and is called the propagator from $x$ to $x^\prime$. Applying this to the change in wavefunction caused by the scattering potential, \eqref{eq:scatter},
+\begin{align}
+\Delta\psi(x^\prime) &= i \int G(x^\prime, x_1) \, \Delta\psi(x_1) \, \dd[3]{\vec{r}_1} \\
+&= \int G(x^\prime, x_1) \, V(x_1) \, \phi(x_1) \, \Delta{t} \, \dd[3]{\vec{r}_1}.
+\end{align}
+So overall, the particle's wavefunction at the event $x^\prime$ is, to first order,
+\begin{equation}
+\psi(x^\prime) = \phi(x^\prime) +  \int G(x^\prime, x_1) \, V(x_1) \, \phi(x_1) \, \Delta{t} \, \dd[3]{\vec{r}_1}
+.\end{equation}
+In the limit of a continuous interaction, we can integrate over the time interval $\Delta t$,
+\begin{equation}\boxed{
+\psi(x^\prime) = \phi(x^\prime) +  \int G(x^\prime, x_1) \, V(x_1) \, \phi(x_1) \, \dd[4]{x_1}
+}.\end{equation}
+
+\section{Two scattering potentials}
+The above result may be easily generalised to multiple scattering potentials. A long-range force can be modelled, to first order, by a particle scattering from two localised potentials.
+\begin{figure}[hb]
+\centering
+\include{figures/doubleScatter}
+\caption{A particle undergoing double scattering in the propagator approach.\label{eq:doubleScatter}}
+\end{figure}
+
+Consider two localised scattering potentials, each with strength $V$, at events $x_1$ and $x_2$. Then extending the above result gives that the post-scattering wavefunction is
+\begin{align}
+\psi(x^\prime) = \phi(x^\prime) &+ \int G(x^\prime, x_1) \, V(x_1) \, \phi(x_1)  \dd[4]{x_1} \nonumber \\
+&+ \int G(x^\prime, x_2) \, V(x_2) \, \phi(x_2) \, \dd[4]{x_2} \nonumber \\
+&+ \int \int G(x^\prime, x_2) \, V(x_2) \, G (x_2, x_1) \, V(x_1) \, \phi(x_1) \, \dd[4]{x_1} \, \dd[4]{x_2}\label{eq:doubleScatter}
+\end{align}
+
+\section{Free particle propagator}
+Start from
+\begin{equation}
+\psi(x^\prime) = i \int \dd[3]{\vec{r}} \, G(x^\prime; x) \, \psi(x)
+\end{equation}
+for $t^\prime > t$. This condition can be encapsulated mathematically by the Heaviside function,
+\begin{equation}
+\theta(t^\prime - t)\, \psi(x^\prime) = i \int \dd[3]{\vec{r}} \, G(x^\prime, x) \, \psi(x). \label{eq:start}
+\end{equation}
+Now multiply both sides by $\left[ i \pdv{t} - \hat{H} \right]$. The left-hand side becomes,
+\begin{align}
+\left[ i \pdv{t} - \hat{H} \right]\theta(t^\prime - t)\, \psi(x^\prime) &= i \pdv{\theta}{t} \psi(x^\prime) + \theta(t^\prime-t) \underbrace{\left( i\pdv{\psi}{t} - \hat{H}\psi(x^\prime) \right)}_{0\text{ by TDSE}} \nonumber \\
+&= i \delta(t^\prime - t) \, \psi(x^\prime) \\
+&= i \int \dd[3]{\vec{r}} \, \delta(x^\prime - x) \, \psi(x) \\
+&= i \int \dd[3]{\vec{r}} \int \frac{\dd[4]{p}}{(2\pi)^4} \, e^{i(x^\prime-x)p} \,\psi(x) \label{eq:LHS73}
+\end{align}
+Now consider the right-hand side of \eqref{eq:start}. Upon multiplication by $\left[ i \pdv{t} - \hat{H} \right]$ it becomes
+\begin{equation}
+i \int \dd[3]{\vec{r}} \, \left[ i \pdv{t} - \hat{H} \right] \, G(x^\prime, x) \, \psi(x) = i \int \dd[3]{\vec{r}} \, \left[ E - \frac{p^2}{2m} \right] \, G(x^\prime, x) \, \psi(x)
+\end{equation}
+where the operators have been applied to the free plane wavefunction. Taking the Fourier transform to 4-momentum space, the right hand side becomes
+\begin{equation}
+i \int \dd[3]{\vec{r}} \int \frac{\dd[4]{p}}{(2\pi)^4} \, \left[ E - \frac{p^2}{2m} \right] \, \mathcal{G}(p^\prime, p) \, e^{i(x^\prime-x)p} \, \psi(x).\label{eq:RHS73}
+\end{equation}
+where $\mathcal{G}$ is the momentum-space propagator. Now we can compare the integrands of \eqref{eq:LHS73} and \eqref{eq:RHS73} to give an expression for the momentum-space free particle propagator:
+\begin{equation}\boxed{
+\mathcal{G}(p^\prime, p) = \frac{1}{E - \frac{p^2}{2m}}
+}.\end{equation}
+
+This is used as the propagator for off-mass shell virtual particles. As the particle approaches its mass shell, this expression diverges. To allow for integration over momentum, a small complex factor may be added to the denominator,
+\begin{equation}
+\mathcal{G}(p^\prime, p) = \frac{1}{E - \frac{p^2}{2m} + i\epsilon}
+\end{equation}
+and the result taken in the limit where $\epsilon \rightarrow 0$.

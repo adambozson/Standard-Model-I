@@ -1,0 +1,408 @@
+\chapter{Non-Relativistic Quantum Mechanics}
+Here an overview of some basic results from Schr{\"o}dinger and Heisenberg's quantum mechanics are given. The quantum harmonic oscillator (QHO) is solved exactly, and extended to the anharmonic case with first-order perturbation theory. Lagrangian mechanics is briefly covered, before some consideration of the important Dirac $\delta$ and Heaviside $\theta$ step functions.
+
+A time-varying quantum state my be expressed by a vector $\ket{\psi(t)}$. In the position representation, this yields the wavefunction, $\psi(x, t) \equiv \braket{x}{\psi(t)}$.
+
+\section{Schr{\"o}dinger's equation and probability current density}
+We start from the classical energy-momentum relation for a non-relativistic particle with mass $m$,
+\begin{equation}
+E = \frac{p^2}{2m}. \label{eq:energyMomentum}
+\end{equation}
+Replace the energy with the operator $E\rightarrow\hat{E} = i \frac{\partial}{\partial t}$ and momentum with $p\rightarrow \hat{p} = -i \vec{\nabla}$. Then \eqref{eq:energyMomentum} becomes the time-dependent Schr dinger equation (TDSE),
+\begin{equation}
+i \frac{\partial \psi}{\partial t} = -\frac{1}{2m} \nabla^2 \psi \label{eq:schrodinger}.
+\end{equation}
+Multiplying this by the complex conjugate of the wavefunction, $\psi^*$,
+\begin{equation}
+i \psi^* \frac{\partial \psi}{\partial t} = -\frac{1}{2m} \psi^* \nabla^2 \psi \label{eq:part1}.
+\end{equation}
+Take the complex conjugate of \eqref{eq:schrodinger} and multiply by $\psi$,
+\begin{equation}
+-i \frac{\partial \psi^*}{\partial t} \psi = -\frac{1}{2m} (\nabla^2 \psi^*) \psi \label{eq:part2}.
+\end{equation}
+Subtracting \eqref{eq:part2} from \eqref{eq:part1},
+\begin{equation}
+i\left( \psi^*\frac{\partial \psi}{\partial t} + \frac{\partial \psi^*}{\partial t} \psi \right) = -\frac{1}{2m} \left[ \psi^* (\nabla^2 \psi) - \psi (\nabla^2 \psi^*) \right]
+\end{equation}
+and rearranging using the product rule,
+\begin{equation}
+\frac{\partial}{\partial t}(\psi^*\psi) + \frac{i}{2m} \vec{\nabla}\cdot \left[ \psi(\vec{\nabla}\psi^*) - (\vec{\nabla}\psi)\psi^* \right] = 0.
+\end{equation}
+This is nothing but a continuity equation for the probability density $\rho = \psi^*\psi = \abs{\psi}^2$ and the probability current density $\vec{j} = \frac{i}{2m}\left[ \psi(\vec{\nabla}\psi^*) - (\vec{\nabla}\psi)\psi^* \right]$.
+
+\subsubsection{Application to a plane wave}
+Consider a free plane wave whose wavefunction is given by $\psi(x, t) = \mathcal{N} e^{i(\vec{p}\cdot\vec{x} - Et)}$, where $\mathcal{N}$ is a normalisation constant. Then, applying the definitions for $\rho$ and $\vec{j}$ above,
+\begin{align}
+\rho &= \abs{\psi}^2 = \abs{N}^2 \\
+\vec{j} &= \frac{i}{2m}\left[ \psi(\vec{\nabla}\psi^*) - (\vec{\nabla}\psi)\psi^* \right] = \frac{\abs{N}^2}{m} \vec{p}
+\end{align}
+
+\section{Heisenberg and interaction pictures}\
+\subsection{Heisenberg picture}
+In the above, we have used the Schr{\"o}dinger picture where operators remain constant in time, and the states can vary. In contrast, the Heisenberg picture treats the states as constants, and the operators evolve in time. To show that these are equivalent, solve the time-independent Schr{\"o}dinger equation for an energy eigenstate $\ket{\psi(t)}$.
+\begin{align}
+i \frac{\dd \ket{\psi(t)}}{\dd t} &= \hat{H} \ket{\psi(t)} \\
+\Rightarrow\quad \int\limits_0^t \frac{\dd \ket{\psi(t^\prime)}}{\ket{\psi(t^\prime)}} &= -i \int\limits_0^t \hat{H} \, \dd t^\prime \\
+\Rightarrow\quad \ket{\psi(t)} &= e^{-i\hat{H}t} \ket{\psi(0)} \quad \text{for time-independent $\hat{H}$.} \label{eq:evolution}
+\end{align}
+In quantum mechanics, observables connect the theory with measurements. Observable quantities are expectation values of operators. Consider some general operator, $\hat{A}$, whose expectation value is given by
+\begin{align}
+\expval{A} &= \expval{\hat{A}}{\psi(t)} \\
+&= \expval{e^{i\hat{H}t}\hat{A}e^{-i\hat{H}t}}{\psi(0)}.
+\end{align}
+Therefore, it is equivalent to define time-independent states and time-dependent operators in the Heisenberg picture:
+\begin{align}
+\ket{\psi_H} &\equiv \ket{\psi(0)} \\
+\hat{A}_H &\equiv e^{i\hat{H}t}\hat{A}e^{-i\hat{H}t}.
+\end{align}
+Then the expectation value is simply
+\begin{equation}
+\expval{A} = \expval{\hat{A}_H}{\psi_H}
+\end{equation}
+and
+\begin{align}
+\dv{\hat{A}_H}{t} &= i\hat{H}e^{i\hat{H}t}\hat{A}e^{-i\hat{H}t} - ie^{i\hat{H}t}\hat{A}\hat{H}e^{-i\hat{H}t} \nonumber \\
+&= i(\hat{H}\hat{A} - \hat{A}\hat{H}) \nonumber \\
+&= i [ \hat{H}, \hat{A} ]
+\end{align}
+
+\subsection{The interaction picture}
+In the interaction picture, both states and operators have some time dependance. In the interaction picture, we split the Hamiltonian into a free part $\hat{H}_0$ and interaction part $\hat{H}^\prime$,
+\begin{equation}
+\hat{H} = \hat{H}_0 + \hat{H}^\prime.
+\end{equation}
+The free part is generally time-independent and easily solved. We then say that operators $\hat{A}_I$ evolve according to the free part of the Hamiltonian,
+\begin{equation}
+\hat{A}_I(t) = e^{i\hat{H}_0t}\hat{A}e^{-i\hat{H}_0t}.
+\end{equation}
+Then the operator in the interaction picture evolves according to
+\begin{equation}
+\dv{\hat{A}_I}{t} = i [ \hat{H}_0, \hat{A}_I(t) ].
+\end{equation}
+Now consider the expectation value of the operator, $\expval{A} = \expval{e^{i\hat{H}_0t}\hat{A}e^{-i\hat{H}_0t}}{\psi_I(t)}$. We see that for this to be equivalent to the Schr{\"o}dinger picture expectation value, the states must evolve according to the interaction part of the Hamiltonian $\hat{H}^\prime$,
+\begin{equation}
+\ket{\psi_I(t)} = e^{-i\hat{H}^\prime t}\ket{\psi(0)}
+\end{equation}
+or equivalently
+\begin{equation}
+\ket{\psi_I(t)} = e^{i\hat{H}_0 t}\ket{\psi(t)}.
+\end{equation}
+The interaction picture is used in the perturbative expansion of the $S$-matrix in quantum field theory (QFT). This leads to the concept of using Feynman diagrams to calculate amplitudes.
+
+Note that the three different pictures of quantum mechanics coincide at $t=0$.
+
+\section{Quantum harmonic oscillator}
+The quantum harmonic oscillator is an exactly solvable problem that neatly introduces ladder operators.
+
+Consider a Hamiltonian of the form
+\begin{equation}
+H = \frac{p^2}{2m} + \frac{1}{2} m \omega^2 x^2
+\end{equation}
+where it should be clear from the context which quantities are operators, so we drop the hat notation, $\hat{O} \rightarrow O$.
+
+Introduce the ladder operator
+\begin{equation}
+a = \frac{m \omega x + ip}{\sqrt{2m\omega}}
+\end{equation}
+and bearing in mind that $x$ and $p$ are hermitian,
+\begin{equation}
+a^\dagger = \frac{m \omega x - ip}{\sqrt{2m\omega}}.
+\end{equation}
+The product $a^\dagger a$ is
+\begin{align}
+a^\dagger a &= \frac{(m \omega x - ip)(m \omega x + ip)}{2 m \omega} \nonumber \\
+&= \frac{1}{2m\omega} \left\{ (m \omega x)^2 + im\omega [x, p] + p^2 \right\} \nonumber \\
+&= \frac{H}{\omega} - \frac{1}{2}.
+\end{align}
+Rearranging, the Hamiltonian can be written
+\begin{equation}
+H = \left( a^\dagger a + \frac{1}{2} \right) \omega.
+\end{equation}
+Similarly,
+\begin{equation}
+a a^\dagger = \frac{H}{\omega} + \frac{1}{2}.
+\end{equation}
+We also have that
+\begin{equation}
+[a, a^\dagger] = 1
+\end{equation}
+and
+\begin{align}
+[a, H] &= \omega a\\
+[a^\dagger, H] &= -\omega a^\dagger.
+\end{align}
+
+\subsection{Energy spectrum}
+
+Now consider the action of the operator $a^\dagger$ on a stationary state $\ket{n}$ with some energy $E_n$. What is the energy of the state $A^\dagger \ket{n}$?
+\begin{align}
+H a^\dagger \ket{n} &= \left( a^\dagger H - [a^\dagger, H] \right)\ket{n} \nonumber \\
+&= \left( a^\dagger H + \omega a^\dagger \right)\ket{n} \nonumber \\
+&= \left( E_n + \omega \right) a^\dagger \ket{n}.
+\end{align}
+So $a^\dagger\ket{n}$ is also an energy eigenstate with energy $\left( E_n + \omega \right)$. Since $a^\dagger$ has raised the energy of the state $\ket{n}$ by one quantum of energy, we call it the raising operator.
+
+Similarly, the application of $a$ to $\ket{n}$ lowers the energy by $\omega$,
+\begin{equation}
+H a \ket{n} = (E_n - \omega) a \ket{n}.
+\end{equation}
+$a$ is called the lowering operator and together $a$ and $a^\dagger$ are ladder operators that span the energy spectrum of the QHO. In QFT, these operators correspond to the creation and annihilation of particles since particles are wave excitations of the vacuum.
+
+\subsection{Zero-point energy}
+There must be some state $\ket{0}$ for which $a\ket{0}$ vanishes. Equating to zero the square length of this state vector,
+\begin{align}
+0 = \abs{a\ket{0}}^2 &= \expval{a^\dagger a}{0} \\
+&= \expval{\frac{H}{\omega} - \frac{1}{2}}{0} \nonumber \\
+&= \frac{E_0}{\omega} - \frac{1}{2}.
+\end{align}
+Rearranging gives the energy of the vacuum state, $\ket{0}$,
+\begin{equation}
+E_0 = \frac{\omega}{2}.
+\end{equation}
+
+\subsection{Action of the ladder operators}
+
+Now we can build up the ladder of energy states by continuous action of the raising operator,
+\begin{align*}
+a^\dagger\ket{0} &= \alpha_0 \ket{1} \\
+a^\dagger\ket{1} &= \alpha_1 \ket{2} \\
+\ldots \\
+a^\dagger\ket{n} &= \alpha_n \ket{n+1}
+\end{align*}
+where the normalisation constant can be found via
+\begin{align}
+\alpha_n^2 = \abs{a^\dagger\ket{n}} &= \expval{a a^\dagger}{n} \nonumber \\
+&= \expval{\frac{H}{\omega} + \frac{1}{2}}{n} \nonumber \\
+&= n+1
+\end{align}
+so $\alpha_n = \sqrt{n+1}$. Therefore the general action of the raising operator is
+\begin{equation}
+\boxed{
+a^\dagger \ket{n} = \sqrt{n+1}\ket{n+1}
+}.
+\end{equation}
+Similarly,
+\begin{equation}
+\boxed{a \ket{n} = \sqrt{n} \ket{n-1}}.
+\end{equation}
+
+A general state $\ket{n}$ can be made from repeated application of $a^\dagger$ from the ground state:
+\begin{equation}
+\ket{n} = \frac{1}{\sqrt{n!}} (a^\dagger)^n \ket{0}.
+\end{equation}
+
+
+Notice that $a^\dagger a \ket{n} = n \ket{n}$, so $a^\dagger a$ is called the number operator.
+
+\section{The anharmonic oscillator (perturbation theory)}
+We now generalise the above QHO to include an anharmonic term,
+\begin{align}
+H &= \frac{p^2}{2m} + \frac{1}{2}m \omega^2 x^2 + \lambda x^3 \\
+&= H_0 + \lambda H^\prime
+\end{align}
+where the second line expresses the Hamiltonian as in the interaction picture. In this case, the interaction hamiltonian is $H^\prime = x^3$. In what follows, we assume that $\lambda$ is small such that $H^\prime$ is a perturbation to the QHO solution and we stop expansions after first order in $\lambda$.
+
+The eigenvectors of the full Hamiltonian may be expanded as
+\begin{equation}
+\ket{n} = \ket{n}^0 + \lambda\ket{n}^1 + \cdots
+\end{equation}
+where all the $\ket{n}^i$ are assumed to be orthogonal. The state has corresponding energy
+\begin{equation}
+E_n = E_n^0 + E_n^1 + \ldots
+\end{equation}
+such that it is the solution of the TISE,
+\begin{align}
+H\ket{n} &= E_n\ket{n} \\
+\left( H_0 + \lambda H^\prime + \ldots \right)\left( \ket{n}^0 + \lambda\ket{n}^1 + \ldots \right) &= \left( E_n^0 + \lambda E_n^1 + \ldots \right)\left( \ket{n}^0 + \lambda\ket{n}^1 + \ldots \right)
+\end{align}
+
+Equating the coefficients of $\lambda^0$ gives the trivial harmonic part of the solution,
+\begin{equation}
+H_0 \ket{n}^0 = E_n^0 \ket{n}^0.
+\end{equation}
+Equating the coefficients of $\lambda^1$ gives
+\begin{equation}
+H_0\ket{n}^1 + H^\prime\ket{n}^0 = E_n^0\ket{n}^1 + E_n^1\ket{n}^0. \label{eq:lambda1}
+\end{equation}
+Rearranging and multiplying by $^0\!\bra{n}$,
+\begin{equation}
+^0\!\bra{n}H_0 - E_n^0\ket{n}^1 + ^0\!\bra{n}H^\prime - E_n^1\ket{n}^0 = 0.
+\end{equation}
+Now use that $^0\!\bra{n}H_0 = \,^0\!\bra{n} E_n^0$ to see that the first term is equal to zero. This gives the solution for the change in energy (up to first order in $\lambda$) of the $n$th excited state,
+\begin{equation}\boxed{
+E_n^1 = \,^0\!\expval{H^\prime}{n}^0
+}.
+\end{equation}
+
+Now we wish to find the first-order correction to the state, $\ket{n}^1$. First, use the representation of $\ket{n}^1$ in the basis of harmonic solutions, $\ket{m}^0$,
+\begin{equation}
+\ket{n}^1 = \sum_m \ket{m}^0 \, ^0\!\braket{m}{n}^1 \label{eq:spectrum}.
+\end{equation}
+The eigenstates of the harmonic problem $\ket{m}^0$ may serve as a basis since they are all orthonormal, i.e.~$^0\!\braket{m}{n}^0 = \delta_{nm}$.
+
+Now to get the coefficients $^0\!\braket{m}{n}^1$, multiply \eqref{eq:lambda1} by $^0\!\bra{m}$,
+\begin{equation}
+\underbrace{^0\!\bra{m}H_0\ket{n}^1}_{E_m^0 \,^0\!\braket{m}{n}^1} + ^0\!\bra{m}H^\prime\ket{n}^0 = ^0\!\bra{m}E_n^0\ket{n}^1 + \underbrace{^0\!\bra{m}E_n^1\ket{n}^0}_0.
+\end{equation}
+Rearranging,
+\begin{equation}
+^0\!\braket{m}{n}^0 = \frac{^0\!\bra{m}H^\prime\ket{n}^0}{E_n^0 - E_m^0} \label{eq:coefficients}.
+\end{equation}
+Notice that this approach only works if the energy levels are non-degenrate, i.e.~$E_n^0 \neq E_m^0$ for all $n \neq m$. For the QHO this is the case, but in more general cases one must diagonalise the Hamiltonian first.
+
+Now, substituting \eqref{eq:coefficients} into \eqref{eq:spectrum} gives the value of the first-order correction to the energy eigenstates,
+\begin{equation}
+\boxed{
+\ket{n}^1 = \sum_m \frac{^0\!\bra{m}H^\prime\ket{n}^0}{E_n^0 - E_m^0} \ket{m}^0
+}.
+\end{equation}
+
+In the particular case where $H^\prime = x^3$ it is helpful to express the perturbation in terms of the ladder operators,
+\begin{equation}
+x^3 = \frac{(a + a^\dagger)^3}{(2m\omega)^\frac{2}{3}}.
+\end{equation}
+Then the determination of $E_n^1$ and $\ket{n}^1$ is achievable via the application of the ladder operators to the QHO eigenstates.
+
+\section{Lagrangian mechanics}
+In general, a Lagrangian is a function of coordinates $q$ and their derivatives, $L = L(q, \dot{q})$. The action is the integral of $L$,
+\begin{equation}
+S = \int L(q, \dot{q}) \, \dd t.
+\end{equation}
+Classical paths are those paths with stationary action, where $\delta S = 0$. This requires,
+\begin{align}
+\delta S &= \int \dd t \left\{ \pdv{L}{q} \delta q + \pdv{L}{\dot{q}} \delta\dot{q} \right\} \\
+&= \int \dd t \left\{ \left[ \pdv{L}{q} - \dv{t}\left( \pdv{L}{\dot{q}} \right) \right] \delta q \right\} + \left[ \pdv{L}{\dot{q}} \delta q \right]_{t_1}^{t_2} = 0.
+\end{align}
+The last term is a total derivative and vanishes for any $\delta q$ that decays at spatial infinity and obeys $\delta q(t_1) = \delta q(t_2)$. For all such paths, we obtain the Euler-Lagrange equations of motion,
+\begin{equation}
+\boxed{
+\pdv{L}{q} - \dv{t} \left( \pdv{L}{(\dot{q})} \right) = 0
+}.
+\end{equation}
+
+\subsection{Relation to the Hamiltonian}
+
+Each coordinate $q$ has a conjugate momentum,
+\begin{equation}
+p = \pdv{L}{\dot{q}}.
+\end{equation}
+Then the Hamiltonian is related to the Lagrangian by
+\begin{equation}
+\boxed{
+H = p\dot{q} - L
+}
+\end{equation}
+
+For a quantum treatment, we replace the coordinates with operators. The operators and their conjugate momenta have the commutation relations
+\begin{equation}
+[\hat{q}, \hat{p}] = i
+\end{equation}
+in natural units.
+
+\subsection{Application to the QHO}
+The QHO Lagrangian is
+\begin{equation}
+L = \frac{1}{2}m\dot{x}^2 - \frac{1}{2}m\omega^2 x^2.
+\end{equation}
+Therefore the momentum, $p = \pdv{L}{\dot{x}} = m\dot{x}$. So the Hamiltonian is
+\begin{align}
+H &= p\dot{x} - L \\
+&= \frac{p^2}{m} - \left(\frac{1}{2}m\dot{x}^2 - \frac{1}{2}m\omega^2 x^2\right)\\
+&= \frac{1}{2}m\dot{x}^2 + \frac{1}{2}m\omega^2 x^2
+\end{align}
+which is the same as we used for the QHO above.
+
+The Lagrangian and Hamiltonian treatments are equivalent, but often a problem is more soluble in one over the other. QFT makes use of the Lagrangian density, and this is used to express the particles and interactions of the Standard Model.
+
+\section{Dirac $\delta$ function}
+The $\delta$ function may be thought of as a peaked function of width $\Delta x$ and height $1/\Delta x$ around a value $x=x_0$ in the limit $Delta x \rightarrow 0$. It has the properties
+\begin{equation}
+\int\limits_{-\infty}^{+\infty} \delta(x - x_0) \, \dd{x} = 1
+\end{equation}
+and
+\begin{equation}
+\int\limits_{-\infty}^{+\infty} f(x) \, \delta(x - x_0) \, \dd{x} = f(x_0).
+\end{equation}
+As a result, $\delta(x) - \delta(-x)$ is an even function and $\delta{ax} = \delta{x}/\abs{a}$. The proof is as follows:
+\begin{align}
+\int\limits_{-\infty}^{+\infty} \delta(ax) \, \dd{x} &= \int\limits_{-\infty}^{+\infty} \delta(y) \, \frac{\dd{y}}{a} \quad \text{for $y=ax$,} \\
+&= \frac{1}{\abs{a}}.
+\end{align}
+Now consider a function $f(x)$ with roots $a_i$ such that $f(a_i)=0$. Then $\delta(f(x))$ function is non-zero only in the vicinity $x \sim a_i$. Expanding $f(x)$ about a particular root,
+\begin{equation}
+f(x) = \underbrace{f(a_i)}_0 + (x-a_i)\left[ \pdv{f}{x} \right]_{x=a_i} + \ldots
+\end{equation}
+so, using the preceding result, we have
+\begin{align}
+\delta(f(x)) &= \sum_i \delta\left((x-a_i)\left[\pdv{f}{x}\right]_{x=a_i}\right)\\
+&= \sum_i \frac{\delta(x-a_i)}{\left|\pdv{f}{x}\right|_{x=a_i}}.
+\end{align}
+
+
+The $\delta$ function is normally constructed by taking the limit of some test function. Here, various test functions are discussed.
+
+\subsubsection{Discrete $\delta$ function}
+Consider some function $f(x)$ as a set of values $x_i$ in bins of width $\Delta x$. Then the integral becomes a discrete sum,
+\begin{equation}
+\int\limits_{-\infty}^{+\infty} f(x) \, \delta_t(x - x_0) \, \dd{x} \rightarrow \sum_{i={-\infty}}^{+\infty} f(x_i) \, \delta(x_i-x_0) \Delta x
+\end{equation}
+where $\delta_t(x - x_0) = 0$ for $i \neq 0$ and $\delta_t(0) = 1/\Delta{x}$. In the limit $\Delta x \rightarrow 0$, $\delta_t$ becomes the Dirac $\delta$ function. However, it is not particularly useful to have a discrete, non-differentiable definition.
+
+\subsubsection{Breit-Wigner lineshape}
+Consider a test function of a Breit-Wigner resonance peak,
+\begin{equation}
+\delta_t(x) = \frac{1}{\pi} \frac{\epsilon}{x^2 + \epsilon^2}.
+\end{equation}
+Its integral is
+\begin{equation}
+\int\limits_{-\infty}{+\infty} \frac{1}{\pi} \frac{\epsilon}{x^2 + \epsilon^2} \, \dd{x} = \int\limits_{-{\pi}/{2}}^{+{\pi}/{2}} \frac{1}{\pi} \frac{\sec^2{\theta}}{1+\tan^2{\theta}} \, \dd{\theta} = 1
+\end{equation}
+where the substitution $x = \epsilon \tan \theta$ has been used. At $x=0$, $\delta_t(0) = 1/\pi\epsilon$ and the full width at half-maximum is $2\epsilon$. The Breit-Wigner lineshape approaches the Dirac $\delta$ function in the limit $\epsilon\rightarrow 0$.
+
+\subsubsection{Fourier analysis}
+The Fourier integral theorem states that
+\begin{equation}
+f(x) = \frac{1}{2\pi} \int\limits_{-\infty}^{+\infty} e^{ipx} \left( \int\limits_{-\infty}^{+\infty} e^{-p\alpha} f(\alpha) \, \dd{\alpha} \right) \, \dd{p}.
+\end{equation}
+That is, the reverse transform of the Fourier transform of a function returns the original function. Rearranging\footnote{Cauchy showed that the order of integration matters, but this rearrangement is justified under the \emph{theory of distributions}.},
+\begin{equation}
+f(x) = \frac{1}{2\pi} \int\limits_{-\infty}^{+\infty} \left( \int\limits_{-\infty}^{+\infty} e^{pix} e^{-ip\alpha} \, \dd{p} \right) f(\alpha) \, \dd{\alpha} = \int\limits_{-\infty}^{+\infty} \delta(x-\alpha) f(\alpha) \, \dd{\alpha}
+\end{equation}
+where we see the $\delta$ function can now be defined
+\begin{equation}
+\delta(x) = \frac{1}{2\pi} \int\limits_{-\infty}^{+\infty} e^{ipx} \, \dd{p}.
+\end{equation}
+
+\section{Heaviside step function}
+The Heaviside step function is defined in discrete form
+\begin{equation}
+\theta(x) =
+\begin{cases}
+1 & x > 0 \\
+0 & x < 0
+\end{cases}
+\end{equation}
+
+An integral representation for $\theta$ can be reached through recognising that its derivative is the Dirac $\delta$ function,
+\begin{equation}
+\dv{\theta}{x} = \delta(x) = \frac{1}{2\pi} \int\limits_{-\infty}^{+\infty} e^{ipx} \, \dd{p}.
+\end{equation}
+Integrating with respect to $x$,\begin{align}
+\theta(x) &= \frac{1}{2\pi} \int\limits_{-\infty}^{+\infty} \int e^{ipx} \, \dd{p} \, \dd{x} \\
+&= \frac{1}{2\pi i} \int\limits_{-\infty}^{+\infty} \frac{e^{ipx}}{p} \dd{p}
+\end{align}
+where the constant of integration is zero. Adding a small offset to the denominator, we get the final integral form of the $\theta$ step function
+\begin{align}
+\theta(x) = \lim_{\epsilon\rightarrow 0^+} \frac{1}{2\pi i} \oint_C \frac{e^{ipx}}{p+i\epsilon} \, \dd{p}.
+\end{align}
+where $C$ is a contour along the real axis closed in the upper-half plane.
+
+The residue theorem states that
+\begin{equation}
+\oint_C \frac{f(z)}{z-a} \dd{z} = 2\pi i f(a)
+\end{equation}
+for a contour $C$ containing $a$. Applying this to the integral representation for $\theta$ above,
+\begin{equation}
+\theta(x) = \lim_{\epsilon\rightarrow 0^+} \frac{2\pi i}{2\pi i} e^{ip(-i\epsilon)} = \lim_{\epsilon\rightarrow 0^+} e^{p\epsilon} = 1
+\end{equation}
+for $x > 0$. For $x < 0$, the contour must be closed in the lower-half plane and the integral evaluates to $0$.

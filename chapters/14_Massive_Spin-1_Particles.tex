@@ -1,0 +1,116 @@
+\chapter{Massive Spin-1 Particles}
+\section{Polarisations}
+In chapter 12, we saw that for massless spin-1 particles, the equations of motion (Maxwell's equations) can be expressed in covariant form by \eqref{eq:MaxwellCovariant}:
+\begin{equation*}
+j^\mu = \partial^2 A^\mu - \partial^\mu \partial_\nu A^\nu.
+\end{equation*}
+The term $\partial^2 A^\mu$ may be expanded as $(\pdv[2]{t} - \nabla^2)A^\mu = (-E^2 + p^2)A^\mu$. Now we note that for on-shell massless particles, the combination $-E^2+p^2=0$. Therefore, we replace this combination with the analogous term for massive particles, $(-E^2+p^2+m^2)A^\mu = \partial^2A^\mu + m^2A^\mu$,
+\begin{equation}
+\partial^2A^\mu + m^2A^\mu - \partial^\mu\partial_\nu A^\nu = j^\mu \label{eq:proca}
+\end{equation}
+where $j^\mu$ is zero for a free massive spin-1 particle and non-zero when it is a virtual propagator. This is the Proca equation.
+
+Differentiating with $\partial_\mu$,
+\begin{equation}
+\partial_\mu \partial^\nu \partial_\nu A^\mu + m^2 \partial_\mu A^\mu - \partial_\mu \partial^\mu \partial_\nu A^\nu = \partial_\mu j^\mu = 0
+\end{equation}
+where the final equality $\partial_\mu j^\mu = 0$ follows from continuity of the 4-current. Now the first and third terms are equal, as can be seen from index contraction (or swap $\mu \leftrightarrow \nu$ and commute $\partial_\mu$ and $\partial_\nu$ in one term), so we identify
+\begin{equation}
+m^2 \partial_\mu A^\mu = 0
+\end{equation}
+which is nothing but the Lorenz gauge condition \eqref{eq:LorentzGauge} for $m^2 \neq 0$. Therefore, massless spin-1 fields automatically satisfy the Lorenz gauge and we cannot `gauge away' any degrees of freedom as we did in the massless case.
+
+The field may be expressed in its polarisation states as
+\begin{equation}
+A^\mu = \epsilon^\mu_i e^{-ipx}
+\end{equation}
+with possible spatial polarisations
+\begin{align*}
+\epsilon_1 = \mqty(0\\1\\0\\0)\,, \quad  \epsilon_2 = \mqty(0\\0\\1\\0)\,, \quad \epsilon_3 = \mqty(0\\0\\0\\1).
+\end{align*}
+
+Given the field now has some mass, we are free to consider its rest frame where $p^\mu = \mqty(m,\,0,\,0,\,0)^T$. Therefore the condition $p_\mu \epsilon_i^\mu = 0$ in the rest frame.
+
+\subsection{Transformation of the polarisation vector}
+Now consider a particle with momentum $p$ along the $z$-axis, without loss of generality, or equivalently a boost of $-p$ from the rest frame. The 4-momentum is $p^\mu = \mqty(E,\,0,\,0,\,p)^T$. It is clear that polarisations $\epsilon_1$ and $\epsilon_2$ will remain the same since the field is perpendicular to the boost. To determine how $\epsilon_3$ transforms we use the Lorenz gauge condition,
+\begin{align}
+0=\partial_\mu A^\mu &= \partial_\mu \left( \epsilon_3^\mu e^{-ipx} \right)\nonumber \\
+&= \epsilon_3^\mu (-ip_\mu) e^{-ipx} = 0 \nonumber \\
+\Rightarrow \quad p_\mu \epsilon_3^\mu
+\end{align}
+Now the covariant (index-down) form of the 4-momentum is $p_\mu = (E,\,0,\,0,\,-p)$, so the above equation is satisfied by
+\begin{equation}
+\epsilon_3^\mu(p) = \frac{1}{m}\mqty(p\\0\\0\\E) = \frac{1}{m}\mqty(p\\0\\0\\\sqrt{p^2+m^2})
+\end{equation}
+where the $1/m$ factor normalises the polarisation vector for free (on-shell) vector bosons.
+
+\section{Completeness relation}
+For free massive vector bosons the completeness relation is given by the sum of outer products,
+\begin{align}
+\sum_i \epsilon_i \epsilon_i^\dagger &= \mqty(0\\1\\0\\0)\mqty(0,\,1,\,0,\,0) + \mqty(0\\0\\1\\0)\mqty(0,\,0,\,1,\,0) + \frac{1}{m^2}\mqty(p\\0\\0\\E)\mqty(p,\,0,\,0,\,E) \\
+&= \mqty(\dmat[0]{\frac{p^2}{m^2},1,1,\frac{E^2}{m^2}}) \\
+&= -g^{\mu\nu} + \frac{p^\mu p^\nu}{m^2}.
+\end{align}
+Verifying the last equality,
+\begin{equation}
+-g^{00} + \frac{p^0 p^0}{m^2} = -1 + \frac{E^2}{m^2} = \frac{-m^2+E^2}{m^2} = \frac{p^2}{m^2}
+\end{equation}
+and
+\begin{equation}
+-g^{33} + \frac{p^3 p^3}{m^2} = 1 + \frac{p^2}{m^2} = \frac{m^2+p^2}{m^2} = \frac{E^2}{m^2}.
+\end{equation}
+
+\section{Virtual vector bosons}
+\subsection{Polarisations}
+For virtual massive vector bosons there is no longer the constraint that $E^2-p^2=m^2$, so a timelike polarisation is ostensibly allowed. However, imposing the Lorenz gauge condition removes this degree of freedom, just as in the massless case. Now the virtual 4-momentum is $q^\mu = \mqty(\nu,\vec{q})^T$. Therefore,
+\begin{equation}
+-Q^2 = q_\mu q^\mu = \nu^2 - \vec{q}\cdot\vec{q},
+\end{equation}
+where $Q^2-m^2$ is the \emph{virtuality} of the particle. So when travelling along the $z$-axis, $q_z=\sqrt{\nu^2+Q^2}$, giving
+\begin{equation}
+q^\mu(\nu) = \mqty(\nu\\0\\0\\\sqrt{\nu^2+Q^2}).
+\end{equation}
+Therefore, following the procedure above, the polarisation states of a virtual vector boson are
+\begin{equation}
+\epsilon_1 = \mqty(0\\1\\0\\0)\,, \quad  \epsilon_2 = \mqty(0\\0\\1\\0)\,, \quad \epsilon_3 = \frac{1}{Q^2}\mqty(\sqrt{\nu^2+Q^2}\\0\\0\\\nu).
+\end{equation}
+
+\subsection{Propagator}
+For a massive spin-1 field, we had the Proca equation \eqref{eq:proca},
+\begin{equation*}
+\partial^2A^\mu + m^2A^\mu - \partial^\mu\partial_\nu A^\nu = j^\mu
+\end{equation*}
+and from differentiating,
+\begin{equation}
+m^2 \partial_\mu A^\mu = \partial_\mu j^\mu.
+\end{equation}
+Substituting into the Proca equation,
+\begin{align}
+(\partial^2 + m^2)A^\mu &- \frac{1}{m^2}\partial^\mu \partial_\nu j^\nu = j^\mu \nonumber \\
+\Rightarrow \quad (\partial^2 + m^2)A^\mu &= \frac{1}{m^2}\partial^\mu \partial_\nu j^\nu + j^\mu \nonumber \\
+&= \frac{1}{m^2}\partial^\mu \partial^\nu j_\nu + g^{\mu\nu}j_\nu \nonumber \\
+&= \left( g^{\mu\nu} + \frac{1}{m^2} \partial^\mu \partial^\nu \right)j_\nu.
+\end{align}
+Now using that $q^\mu = i\partial^\mu$, $\partial^\mu \partial^\nu = -q^\mu q^\nu$,
+\begin{equation}
+(\partial^2 + m^2)A^\mu = \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{m^2} \right)j_\nu
+\end{equation}
+from which we identify the virtual vector boson propagator
+\begin{equation}\boxed{
+\mathcal{G}(q^\mu) = \frac{i}{-q^2+m^2} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{m^2} \right)
+}.
+\end{equation}
+
+\subsubsection{Decay}
+In an s-channel process, the propagating particle is seen to decay with a characteristic lifetime
+\begin{equation}
+\Gamma = \frac{4\pi}{m^2} \frac{1}{32\pi^2} \abs{T_{fi}^2} p_f.
+\end{equation}
+We therefore modify the wavefunction such that $\psi^\dagger \psi \sim e^{-\Gamma t}$,
+\begin{equation}
+\psi \sim e^{-imt -\frac{\Gamma}{2}t}.
+\end{equation}
+By analogy, we replace $im \rightarrow im + \frac{\Gamma}{2}$ (equivalently $m \rightarrow m - \frac{i\Gamma}{2}$) such that $m^2 \rightarrow (m - \frac{i\Gamma}{2}) \approx m^2 - i\gamma m$ where the approximation holds for $\Gamma \ll m$ (true for real-world examples),
+\begin{equation}
+\mathcal{G}_\text{decay}(q^\mu) = \frac{i}{-q^2+m^2 - i\Gamma m} \left( g^{\mu\nu} - \frac{q^\mu q^\nu}{m^2 - i\Gamma m} \right).
+\end{equation}

@@ -1,0 +1,248 @@
+\chapter{Spinless \Pelectron + \Pmuon scattering}
+For the following calculations we will consider the elastic electromagnetic scattering of scalar electrons and muons. That is, the particles considered are solutions of the Klein-Gordon equation.
+
+The process has one diagram:
+\begin{figure}[h]
+\centering
+\include{figures/emuscatter}
+\caption{Diagram for the t-channel process \HepProcess{\Pelectron+\Pmuon\to\Pelectron+\Pmuon} with scalar particles.\label{fig:emuscatter}}
+\end{figure}
+
+\section{Electrodynamics of scalars}\label{sec:EMdynamics}
+The equations of motion for a particle may be modified to include the electromagnetic interaction via a 4-potential $A$ via the substitution
+\begin{equation}
+p^\mu \rightarrow p^\mu + eA^\mu.
+\end{equation}
+Then the Klein-Gordon equation, \eqref{eq:KleinGordon}, becomes
+\begin{equation}
+\left( i\partial_\mu + eA_\mu \right)\left( i\partial^\mu + eA^\mu \right)\psi = m^2\psi.
+\end{equation}
+Expanding out the left-hand side and collecting the free-particle kinetic and mass terms, we can identify an expression for the electromagnetic potential, $V$,
+\begin{equation}
+\left( \partial_\mu\partial^\mu + m^2 \right)\psi = \left( ie\partial_\mu A^\mu + ieA_\mu\partial^\mu + e^2A_\mu A^\mu \right)\psi \equiv -V(x) \,\psi.
+\end{equation}
+Under the weak field approximation, we may ignore the second-order term $A_\mu A^\mu$, so that
+\begin{equation}
+V(x) \approx -ie\left( \partial_\mu A^\mu + A_\mu\partial^\mu \right)
+\end{equation}
+
+\section{Scattering amplitude}
+The amplitude for a particle with wavefunction $\phi_i$ to scatter from potential $V$ and subsequently have the wavefunction $\phi_f$ is given by
+\begin{align}
+T_{fi} &= -i \int \dd[4]{x} \, \phi_f^* \, V \, \phi_i \\
+&= -i \int \dd[4]{x} \, \phi_f^* \, (-ie) \left( \partial_\mu A^\mu + A_\mu\partial^\mu \right) \, \phi_i
+\end{align}
+where the weak field form of the EM potential has been substituted for $V$. Integrating by parts, the first term in the integral evaluates to
+\begin{equation}
+\int \dd[4]{x} \, \phi_f^* \, \partial_\mu A^\mu \, \phi_i = \left[ \phi_f^* \, A^\mu \, \phi_i \right]_{-\infty}^{+\infty} - \int \dd[4]{x} \, \left( \partial_\mu \phi_f^* \right) A^\mu \, \phi_i
+\end{equation}
+and the boundary term in square brackets goes to zero for a vanishing (i.e.~local) potential. Therefore, the scattering amplitude becomes
+\begin{align}
+T_{fi} &= -i \int \dd[4]{x} \,(-ie)\left( \phi_f^* A_\mu \partial^\mu \phi_i - (\partial_\mu \phi_f^*) A^\mu \phi_i \right) \nonumber \\
+&= -i \int \dd[4]{x} \, A^\mu \,(-ie)\left( \phi_f^* \partial_\mu \phi_i - (\partial_\mu \phi_f^*) \phi_i \right) \nonumber \\
+&= -i \int \dd[4]{x} \, A^\mu \, j_\mu^{fi} \label{eq:scatterAmp}
+\end{align}
+where we have identified the current density,
+\begin{equation}
+j_\mu^{fi} = -ie \left( \phi_f^* \partial_\mu \phi_i - (\partial_\mu \phi_f^*) \phi_i \right).
+\end{equation}
+This is the current-potential formulation, where we identify the scattering process with a current $j_\mu^{fi}$ and potential $A^\mu$.
+
+At the vertex changing A to C, the scalar electron has plane wavefunctions,
+\begin{equation}
+\phi_A(x) = N_A \, e^{-iP_Ax}, \quad \phi_C(x) = N_C \, e^{-iP_Cx},
+\end{equation}
+giving the current,
+\begin{equation}
+j_\mu^{CA} = -e \, N_C^* \, N_A \, e^{i(P_C-P_A)x} \, (P_A + P_C)_\mu. \label{eq:current}
+\end{equation}
+This will be the current in the current-potential formulation. Similarly, the current flowing through the other vertex is given by
+\begin{equation}
+j_\mu^{DB} = -e \, N_D^* \, N_B \, e^{i(P_D-P_B)x} \, (P_B + P_D)_\mu.
+\end{equation}
+
+We wish to identify the potential $A^\mu$ associated with the current $j_\mu^{DB}$. For the potential to describe fields that behave according to Maxwell's equations, it must itself obey the Poisson equation (see Section \ref{sec:maxwell} below),
+\begin{equation}
+\partial^2 A^\mu = j^\mu.
+\end{equation}
+It can be verified that the potential
+\begin{equation}
+A_{DB}^\mu = \frac{- g^{\mu\nu} j^{DB}_\nu}{q^2} \label{eq:potential}
+\end{equation}
+is a solution via substitution,
+\begin{align}
+\partial^2 \left( \frac{-g^{\mu\nu} j^{DB}_\nu}{q^2} \right) &= -\frac{1}{q^2} \left[ i(P_D - P_B) \right]^2 \, j_{DB}^\mu \nonumber \\
+&= j_{DB}^\mu
+\end{align}
+where $q^2 = (P_D - P_B)^2 = t$ is the 4-momentum of the propagating photon.
+
+Inserting the above forms for the current, \eqref{eq:current}, and potential, \eqref{eq:potential}, into the expression for the scattering amplitude, \eqref{eq:scatterAmp},
+\begin{equation}
+T_{fi} = \frac{ie^2}{q^2} \int \dd[4]{x} \, N_C^* \, N_A \, N_D^* \, N_B \, (P_A + P_C)_\mu (P_B + P_D)^\mu \, e^{i(P_C+P_D-P_A-P_B)x}
+\end{equation}
+
+\section{Scattering rate}
+To calculate the cross-section, we would like to know the rate $W_{fi}$ of particles being scattered per unit time and volume,
+\begin{equation}\boxed{
+W_{fi} = \frac{T_{fi}^* T_{fi}}{T \times V}
+}\end{equation}
+
+
+Assume the scattering takes place in a volume $V$. We use the covariant normalisation to $2E$ particles in the volume, giving
+\begin{equation}
+N_i = \frac{1}{\sqrt{V}} \quad \text{for $i=A,B,C,D$.}
+\end{equation}
+Then the amplitude becomes
+\begin{equation}
+T_{fi} = \frac{ie^2}{q^2 \, V^2} \int \dd[4]{x} \, (P_A + P_C)_\mu (P_B + P_D)^\mu \, e^{i(P_C+P_D-P_A-P_B)x}
+\end{equation}
+giving a probability
+\begin{align}
+T_{fi}^* T_{fi} &= \frac{e^4}{q^4 \, V^4} \int_{TV} \dd[4]x \int_{TV} \dd[4]x^\prime \, \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2 \, e^{i(P_C+P_D-P_A-P_B)(x-x^\prime)} \\
+&= \frac{e^4}{q^4 \, V^4} \left(\sqrt{2\pi}\right)^4 \, \sqrt{TV} \int_{TV} \dd[4]{x} \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2 \, e^{i(P_C+P_D-P_A-P_B)x} \nonumber \\
+&= \frac{e^4}{q^4 \, V^4} \left(\sqrt{2\pi}\right)^8 \, \left(\sqrt{TV}\right)^2 \, \delta^{(4)}(P_C+P_D-P_A-P_B) \,  \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2 \nonumber \\
+&= \frac{e^4}{q^4 \, V^4} \, (2\pi)^4 \, \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2\, \delta^{(4)}(P_C+P_D-P_A-P_B)\, TV
+\end{align}
+which gives the rate
+\begin{equation}
+W_{fi} = \frac{(2\pi)^4\,e^4}{q^4 \, V^4} \, \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2\, \delta^{(4)}(P_C+P_D-P_A-P_B).
+\end{equation}
+
+\section{Density of states}
+The larger the number of final states per unit volume $N_f$ available to a process, the more likely it is to happen and hence the cross-section is proportional to $N_f$.
+
+In the scattering problem the number of final states is the number of possible momenta inside $[\vec{p}, \vec{p}+\dd[3]{\vec{p}}]$ for the propagating photon with a given energy. This is given by
+\begin{equation}
+N_f = \frac{1}{2E} \frac{\dd[3]{\vec{p}}}{\Delta p}
+\end{equation}
+where $\Delta p$ is the separation in momentum space between adjacent states and the $1/2E$ factor is due to the fact that there are $2E$ particles inside the volume and we want the number of states for one particle.
+
+Since the scattering process is modelled as happening inside a volume $V$, the propagating photon has the wavefunction of a particle in an infinite potential well with the dimensions of $V$ (Dirichlet boundary conditions, $\psi(0) = \psi(L) = 0$). This leads to the quantisation of its allowed momentum,
+\begin{align}
+p_x &= \frac{2\pi}{L_x}\, n_x, \quad
+p_y = \frac{2\pi}{L_y}\, n_y, \quad
+p_z = \frac{2\pi}{L_z}\, n_z.
+\end{align}
+Therefore, the separation between momentum states is $2\pi/L$ in each dimension. This leads to the density of states,
+\begin{align}
+N_f &= \frac{1}{2E} \frac{L_x}{2\pi} \frac{L_x}{2\pi} \frac{L_x}{2\pi} \dd[3]{\vec{p}} \nonumber \\
+&= \frac{1}{2E} \frac{V}{(2\pi)^3} \dd[3]{\vec{p}}.
+\end{align}
+
+Now the photon's energy is shared amongst particles $C$ and $D$, so the density of final states becomes
+\begin{align}
+N_f^{CD} &= \frac{1}{2E_C} \frac{V}{(2\pi)^3} \dd[3]{\vec{p}_C} \, \frac{1}{2E_D} \frac{V}{(2\pi)^3} \dd[3]{\vec{p}_D} \\
+&= \frac{1}{4E_CE_D}\frac{V^2}{(2\pi)^6} \dd[3]{\vec{p}_C} \, \dd[3]{\vec{p}_D}
+\end{align}
+
+\section{Incoming flux}
+The rate $W_{fi}$ scales with the flux of incoming particles, so the in cross-section calculation, it should be divided by a flux factor, $\rho_A\rho_Bu_{AB}$, where $\rho_{AB}$ give the density of initial-state particles and $u_{AB} = u_A - u_B$ is their relative velocity.
+\begin{align}
+\rho_A\rho_Bu_{AB} &= \frac{2E_A}{V} \frac{2E_B}{V} \left( \frac{p_A}{E_A} - \frac{p_B}{E_B} \right) \\
+&= \frac{4}{V^2} \left( p_A E_B - p_B E_A \right).
+\end{align}
+For a collider in the centre of momentum (CM) frame, we have $p_A = -p_B$,
+\begin{equation}
+\rho_A\rho_Bu_{AB} = \frac{4p_A}{V^2} (E_B + E_A) = \frac{4p_A\sqrt{s}}{V^2}
+\end{equation}
+where $\sqrt{s} = E_A + E_B$ is the CM energy.
+
+\section{Cross-section}
+Now we are ready to calculate the differential cross-section,
+\begin{align}
+\dd{\sigma} &= \frac{W_{fi}}{\rho_A\rho_Bu_{AB}} N_f \\
+&= \left\{ \frac{(2\pi)^4\,e^4}{q^4 \, V^4} \, \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2\, \delta^{(4)}(P_C+P_D-P_A-P_B) \right\} \frac{V^2}{4p_A\sqrt{s}} \frac{1}{4E_CE_D}\frac{V^2}{(2\pi)^6} \dd[3]{\vec{p}_C} \, \dd[3]{\vec{p}_D} \nonumber \\
+&= \frac{e^4}{q^4V^2} \frac{\left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2}{4p_A\sqrt{s}} \, \dd{Q}
+\end{align}
+where $\dd{Q}$ is the Lorentz-invariant phase space factor
+\begin{equation}
+\dd{Q} = \frac{V}{2E_C} \frac{\dd[3]{\vec{p}_C}}{(2\pi)^3} \frac{V}{2E_D} \frac{\dd[3]{\vec{p}_D}}{(2\pi)^3} (2\pi)^4 \, \delta^{(4)}(P_C+P_D-P_A-P_B)
+\end{equation}
+In the CM frame, we have that $\vec{p}_A = -\vec{p}_B$, so
+\begin{equation}
+\dd{Q} = \frac{V^2}{(2\pi)^2} \, \delta(\sqrt{s} - E_C - E_D) \, \delta^{(3)}(\vec{p_C} + \vec{p_D}) \, \frac{\dd[3]{\vec{p}_C}}{2E_C} \frac{\dd[3]{\vec{p}_D}}{2E_D}.
+\end{equation}
+We now integrate over all momenta for $D$, the unobserved particle. This gives,
+\begin{align}
+\dd{Q} &= \frac{V^2}{(2\pi)^2} \frac{1}{4E_C E_D} \, \delta(\sqrt{s} - E_C - E_D) \, \dd[3]{\vec{p}_C} \\
+&= \frac{V^2}{(2\pi)^2} \frac{1}{4E_C E_D} \, \delta(\sqrt{s} - E_C - E_D) \, p_C^2 \, \dd{p_C} \, \dd{\Omega}
+\end{align}
+
+Now from the relation $E^2 = p^2 + m^2$ we have that $E \dd{E} = p\dd{p}$, so
+\begin{equation}
+\dd{Q} = \frac{V^2}{(2\pi)^2} \frac{p_C}{4 E_D} \, \delta(\sqrt{s} - E_C - E_D)  \, \dd{E_C} \, \dd{\Omega}
+\end{equation}
+
+We next want to integrate over $E_C$. To do so, write the expression in the $\delta$ function as
+\begin{align}
+f(E_C) &= \sqrt{s} - E_C - E_D \\
+&= \sqrt{s} - E_C - \sqrt{p_D^2 + m_D^2} \nonumber \\
+&= \sqrt{s} - E_C - \sqrt{p_C^2 + m_D^2} \quad \text{since $\vec{p}_C = -\vec{p}_D$} \nonumber \\
+&= \sqrt{s} - E_C - \sqrt{E_C^2 - m_C^2 + m_D^2}.
+\end{align}
+Therefore,
+\begin{align}
+\abs{\dv{f}{E_C}} &= 1 + \frac{E_C}{\sqrt{E_C^2 - m_C^2 + m_D^2}} \nonumber \\
+&= \frac{\sqrt{s}}{E_D}
+\end{align}
+so the $\delta$-function becomes
+\begin{equation}
+\delta(\sqrt{s} - E_C - E_D) = \delta(E_C) \, \frac{E_D}{\sqrt{s}}
+\end{equation}
+and the Lorentz-invariant phase space is
+\begin{equation}
+\dd{Q} = \frac{V^2}{(2\pi)^2} \frac{p_C}{4\sqrt{s}} \, \delta(E_C)\, \dd{E_C} \, \dd{\Omega}.
+\end{equation}
+Integrating over the final-state particle's energy, $E_C$,
+\begin{equation}
+\dd{Q} = \frac{V^2}{(2\pi)^2} \frac{p_C}{4\sqrt{s}} \, \dd{\Omega}.
+\end{equation}
+
+Substituting this back into the expression for the differential cross section,
+\begin{equation}\boxed{
+\dv{\sigma}{\Omega} = \frac{1}{64\pi^2}\frac{e^4}{q^4} \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2 \frac{1}{s} \, \frac{p_C}{p_A}
+}.\end{equation}
+The fact that the cross-section is proportional to $1/s$, the inverse square of the SM energy means that we need increasingly higher luminosities to observe high energy scattering processes.
+
+\section{Application: high-energy scattering}
+Consider the ultra-relativistic case, where $E \gg m$ for all particles. In the CM frame, all particles now have the same energy $E = s/2$. Then we have that the Mandelstam $t$ variable is
+\begin{align}
+q^2 = t &= (P_A - P_C)^2 \\
+&= \mqty(E_A - E_C \\ \vec{p}_A - \vec{p}_C)^2 \nonumber \\
+&= -2E^2 (1-\cos\theta)
+\end{align}
+
+In this case, the differential cross-section becomes
+\begin{equation}
+\dv{\sigma}{\Omega} = \frac{e^4}{64\pi^2} \frac{\left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2}{4E^4 (1-\cos\theta)^2} \frac{1}{s}.
+\end{equation}
+
+Now we have, in the CM frame,
+\begin{equation*}
+P_A = \mqty(E \\ \vec{p}) \, \quad P_B = \mqty(E \\ -\vec{p}) \, \quad P_C = \mqty(E \\ \vec{p^\prime}) \, \quad P_D = \mqty(E \\ -\vec{p^\prime}),
+\end{equation*}
+and therefore,
+\begin{align}
+(P_A + P_C)_\mu (P_B + P_D)^\mu &= \mqty(2E \\ \vec{p} + \vec{p^\prime}) \mqty(2E \\ -\vec{p} - \vec{p^\prime} ) \quad \text{with $\abs{\vec{p}} = \abs{\vec{p^\prime}} = E$} \nonumber \\
+&= (2E)^2 + (\vec{p} + \vec{p^\prime})^2 \nonumber \\
+&= 6E^2 + 2E^2 \cos\theta
+\end{align}
+\begin{equation}
+\Rightarrow\quad \left[ (P_A + P_C)_\mu (P_B + P_D)^\mu \right]^2 = 4E^4 (3 + \cos\theta)^2
+\end{equation}
+
+So the final answer is
+\begin{equation}
+\dv{\sigma}{\Omega} = \frac{e^4}{64\pi^2} \left(\frac{3+\cos\theta}{1-\cos\theta}\right)^2 \frac{1}{s}.
+\end{equation}
+
+\section{$1 \to 2$ scattering (decay)}
+For a single body of mass $M$ decaying into two particles, we replace the flux factor with the normalised energy density,
+\begin{equation}
+\rho = \frac{2M}{V}
+\end{equation}
+so the cross-section is given by
+\begin{equation}
+\dd{\sigma} = \frac{V}{2M} \, W_{fi} \, N_f.
+\end{equation}
+where for a two-body final state, $N_f$ is the same as for above. However, $T_{fi}$ will obviously be different.

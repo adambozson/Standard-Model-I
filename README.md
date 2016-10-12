@@ -27,8 +27,8 @@ Adjustments, corrections, extensions, and other contributions are very welcome a
 
 * Fork this repo and [create a branch][branch], if appropriate
 * Add your name and email to AUTHORS
-* Make and commit your changes
-* Submit a pull request
+* Make and compile your changes, checking the result
+* Commit and submit a pull request
 
 If you're unsure about a particular improvement, create an issue and we can discuss it.
 

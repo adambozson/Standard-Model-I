@@ -1,0 +1,147 @@
+\chapter{\Pelectron \Pmuon scattering}
+This time the scattering between electrons and muons will be considered with spin taken into account. This calculation can be easily extended to similar scattering situations.
+
+\section{Electron in an EM field}
+As in Section \ref{sec:EMdynamics} we replace $p^\mu \rightarrow p^\mu + eA^\mu$. Then the components transform as
+\begin{align}
+E \rightarrow & E + eV \\
+\vec{p} \rightarrow & \vec{p} + e\vec{A}
+\end{align}
+Starting from the free particle Dirac equation, $(\vec{\alpha}\cdot\vec{p} + \beta m)\psi = E\psi$, after the substitution we have
+\begin{equation}
+\left( \vec{\alpha}\cdot\vec{p} + \beta m + e\left[ \vec{\alpha}\cdot\vec{A} - VI_4 \right] \right) \psi = E\psi
+\end{equation}
+and we may identify $V_D$, the Dirac potential, to be $e\left( \vec{\alpha}\cdot\vec{A} - VI_4 \right)$.
+
+\section{Current-potential formulation}
+Consider the scattering of a particle with wavefunction $\psi_i$ off a potential $V_D$ to wavefunction $\psi_f$. The amplitude is given by
+\begin{align}
+T_{fi} &= -i \int \psi_f^\dagger \, V_D \, \psi_i \, \dd[4]{x} \\
+&= -ie \int \psi_f^\dagger \, \gamma^0 \, \gamma^0 \left( -VI_4 + \alpha^k A_k \right) \psi_i \, \dd[4]{x} \nonumber \\
+&= -ie \int \, \overline{\psi}_f \left( -\gamma^0 V + \gamma^k A_k \right) \psi_i\dd[4]{x} \nonumber \\
+&= ie \int \overline{\psi}_f \, \gamma^\mu A_\mu \psi_i \, \dd[4]{x}.
+\end{align}
+Recall that in the current-potential formulation, the scattering amplitude is given by
+\begin{equation}
+T_{fi} = -i \int j^\mu_{fi} \, A_\mu \, \dd[4]{x}
+\end{equation}
+so we identify the current
+\begin{equation}
+j^\mu_{fi} = -e \, \overline{\psi}_f \, \gamma^\mu \, \psi_i = -e \, \overline{u}_f \, \gamma^\mu \, u_i \, e^{i(p_f - p_i)x}
+\end{equation}
+where the second equality comes from the plane wavefunction.
+
+\section{Scattering amplitude}
+Now we can consider the full electron-muon scattering process.
+\begin{figure}[th]
+\centering
+\include{figures/DiracEMuScatter}
+\caption{Elastic scattering of spin-$\frac{1}{2}$ electrons and muons. This is a $t$-channel process. \label{fig:DiracEMuScatter}}
+\end{figure}
+
+Using the currents $j_1$, $j_2$ and propagator, the transition amplitude is
+\begin{align}
+T_{fi} &= -i \int j_\mu^1 \, \frac{-1}{q^2} \, j^\mu_2 \, \dd[4]{x} \\
+&= -i \int \left( -e \, \overline{u}(k^\prime) \, \gamma_\mu \, u(k) \, e^{i(k^\prime - k)x} \right) \frac{-1}{q^2} \left( -e \, \overline{u}(p^\prime) \, \gamma^\mu \, u(p) \, e^{i(p^\prime - p)x} \right) \, \dd[4]{x} \nonumber \\
+&= \frac{ie^2}{q^2} \int \left[ \overline{u}(k^\prime) \, \gamma_\mu \, u(k) \right]\left[ \overline{u}(p^\prime) \, \gamma^\mu \, u(p) \right] \, e^{i(k^\prime + p^\prime - k - p)x} \, \dd[4]{x}
+\end{align}
+
+As before, in calculating $\abs{T_{fi}}^2$, one exponential term becomes the phase space factor and the other becomes the 4-space volume. The result is
+\begin{equation}
+\abs{T_{fi}}^2 = \frac{e^4}{q^4} \, \left[ \overline{u}(k^\prime) \, \gamma_\mu \, u(k) \right]^\dagger \left[ \overline{u}(p^\prime) \, \gamma^\mu \, u(p) \right]^\dagger \left[ \overline{u}(k^\prime) \, \gamma_\nu \, u(k) \right]\left[ \overline{u}(p^\prime) \, \gamma^\nu \, u(p) \right]
+\end{equation}
+
+Evaluating the Hermitian conjugate (recall that $(\gamma^0)^\dagger = \gamma^0$, $(\gamma^k)^\dagger = -\gamma^k$, and $\gamma^0\gamma^k = -\gamma^k \gamma^0$),
+\begin{align}
+\left[ \overline{u}(p^\prime) \, \gamma^0 \, u(p) \right]^\dagger &= \left[ u^\dagger(p^\prime) \, \gamma^0 \, \gamma^0 \, u(p) \right]^\dagger \nonumber \\
+&= u^\dagger(p) \, \gamma^0 \, \gamma^0 \, u(p^\prime) \nonumber \\
+&= \overline{u}(p) \, \gamma^0 \, u(p^\prime)
+\end{align}
+\begin{align}
+\left[ \overline{u}(p^\prime) \, \gamma^k \, u(p) \right]^\dagger &= \left[ u^\dagger(p^\prime) \, \gamma^0 \, \gamma^k \, u(p) \right]^\dagger \nonumber \\
+&= -u^\dagger(p) \, \gamma^k \, \gamma^0 \, u(p^\prime) \nonumber \\
+&= u^\dagger(p) \, \gamma^0 \, \gamma^k \, u(p^\prime) \nonumber \\
+&= \overline{u}(p) \, \gamma^k \, u(p^\prime)
+\end{align}
+So $\left[ \overline{u}(p^\prime) \, \gamma^\mu \, u(p) \right]^\dagger = \overline{u}(p) \, \gamma^\mu \, u(p^\prime)$ and similarly $\left[ \overline{u}(k^\prime) \, \gamma_\mu \, u(k) \right]^\dagger = \overline{u}(k) \, \gamma_\mu \, u(k^\prime)$.
+Now the transition amplitude is
+\begin{align}
+\abs{T_{fi}}^2 &= \frac{e^4}{q^4} \, \left[ \overline{u}(k) \, \gamma_\mu \, u(k^\prime) \right] \left[ \overline{u}(p) \, \gamma^\mu \, u(p^\prime) \right] \left[ \overline{u}(k^\prime) \, \gamma_\nu \, u(k) \right]\left[ \overline{u}(p^\prime) \, \gamma^\nu \, u(p) \right] \nonumber \\
+&= \frac{e^4}{q^4} \, ^e\!L_{\mu\nu} \, ^\mu\!L^{\mu\nu}
+\end{align}
+where
+\begin{equation}
+^e\!L_{\mu\nu} = \left[ \overline{u}(k) \, \gamma_\mu \, u(k^\prime) \right]\left[ \overline{u}(k^\prime) \, \gamma_\nu \, u(k) \right]
+\end{equation}
+is the electron tensor, and
+\begin{equation}
+^\mu\!L_{\mu\nu} = \left[ \overline{u}(p) \, \gamma_\mu \, u(p^\prime) \right]\left[ \overline{u}(p^\prime) \, \gamma_\nu \, u(p) \right]
+\end{equation}
+is the muon tensor.
+
+\subsection{Sum over spins}
+
+For the whole process we must sum over initial and final spins then average over the initial spins. Then the electron tensor becomes
+\begin{equation}
+^e\!L_{\mu\nu} = \frac{1}{2} \sum_S \sum_{S^\prime} \left[ \overline{u}(k) \, \gamma_\mu \, u(k^\prime) \right]\left[ \overline{u}(k^\prime) \, \gamma_\nu \, u(k) \right].
+\end{equation}
+Writing out the matrix indices,
+\begin{align}
+^e\!L_{\mu\nu} &= \frac{1}{2}\sum_S \sum_{S^\prime} \overline{u}(k)_\alpha \, \gamma^{\alpha\beta}_\mu \, u(k^\prime)_\beta \, \overline{u}(k^\prime)_\epsilon \, \gamma_\nu^{\epsilon\sigma} \, u(k)_\sigma \nonumber \\
+&= \frac{1}{2} \sum_S \sum_{S^\prime} u(k^\prime)_\beta \, \overline{u}(k^\prime)_\epsilon \, \gamma_\nu^{\epsilon\sigma} \, u(k)_\sigma \, \overline{u}(k)_\alpha \, \gamma_\mu^{\alpha\beta} \nonumber \\
+&= \left( \fsl{k^\prime} + m \right)_{\beta\epsilon} \, \gamma_\nu^{\epsilon\sigma} \, \left( \fsl{k} + m \right)_{\sigma\alpha} \, \gamma_\mu^{\alpha\beta}
+\end{align}
+where we have used the completeness relation, \eqref{eq:completeness}, in the last step. This may be written as a trace, such that
+\begin{align}
+^e\!L_{\mu\nu} &= \frac{1}{2} \Tr[(\fsl{k}^\prime + m) \, \gamma_\nu \, (\fsl{k} + m) \, \gamma_\mu] \\
+^\mu\!L_{\mu\nu} &= \frac{1}{2} \Tr[(\fsl{p}^\prime + M) \, \gamma_\nu \, (\fsl{p} + M) \, \gamma_\mu].
+\end{align}
+where the last equation follows from an identical calculation with the muon tensor, and $m$ and $M$ are the electron and muon masses, respectively.
+
+Now the scattering probability is given by
+\begin{equation}
+\abs{T_{fi}}^2 = \frac{e^4}{q^4} \, \frac{1}{2} \Tr[(\fsl{k}^\prime + m) \, \gamma_\nu \, (\fsl{k} + m) \, \gamma_\mu] \, \frac{1}{2} \Tr[(\fsl{p}^\prime + M) \, \gamma_\nu \, (\fsl{p} + M) \, \gamma_\mu].
+\end{equation}
+Using the trace theorems from Section \ref{sec:Trace}, the only non-zero term are those with two or four $\gamma$-matrices:
+\begin{align}
+\abs{T_{fi}}^2 &= \frac{e^4}{4q^4} \, \Tr[\gamma_\alpha \, \gamma_\nu \, \gamma_\beta \, \gamma_\mu \, k^\prime^\alpha \, k^\beta + \gamma_\nu\, \gamma_\mu \, m^2] \, \Tr[\gamma^\alpha \, \gamma^\nu \, \gamma^\beta \, \gamma^\mu \, p^\prime_\alpha \, p_\beta + \gamma^\nu\, \gamma^\mu \, M^2] \nonumber \\
+&= \frac{4e^4}{q^4} \, \left[ \left( g_{\alpha\nu} \, g_{\beta\mu} - g_{\alpha\beta} \, g_{\nu\mu} + g_{\alpha\mu} \, g_{\nu\beta} \right) k^\prime^\alpha \, k^\beta + g_{\nu\mu} m^2 \right]\left[ \left( g^{\alpha\nu} \, g^{\beta\mu} - g^{\alpha\beta} \, g^{\nu\mu} + g^{\alpha\mu} \, g^{\nu\beta} \right) p^\prime^\alpha \, p^\beta + g^{\nu\mu} M^2 \right] \nonumber \\
+&= \frac{8e^4}{q^4} \left[ (k^\prime \cdot p^\prime)(k \cdot p) + (k^\prime \cdot p)(k \cdot p^\prime) - m^2(p^\prime \cdot p) - M^2(k^\prime \cdot k) + m^2M^2 \right]
+\end{align}
+
+\section{Differential cross section}
+In the ultrarelativistic limit the masses become negligible and the scattering probability simplifies to
+\begin{equation}
+\abs{T_{fi}}^2 = \frac{8e^4}{q^4} \left[ (k^\prime \cdot p^\prime)(k \cdot p) + (k^\prime \cdot p)(k \cdot p^\prime) \right]
+\end{equation}
+
+Now we wish to express this in terms of the Mandelstam variables. The process is $t$-channel, so we have that
+\begin{align}
+t &= q^2 \\
+&= (k - k^\prime)^2 = (p - p^\prime)^2 \nonumber \\
+&\approx -2k\cdot k^\prime \approx -2p\cdot p^\prime \nonumber \\
+\end{align}
+The centre of momentum energy is
+\begin{align}
+s &= (k + p)^2 = (k^\prime + p^\prime)^2 \nonumber \\
+&\approx 2k\cdot p \approx 2k^\prime \cdot p^\prime
+\end{align}
+and finally
+\begin{align}
+u &= (k - p^\prime)^2 = (p - k^\prime)^2 \nonumber \\
+&\approx -2k\cdot p^\prime \approx -2p \cdot k^\prime
+\end{align}
+
+Using these relations, the scattering probability may be expressed as
+\begin{align}
+\abs{T_{fi}}^2 &= \frac{2e^4}{t^2} \left( s^2 + u^2 \right)
+\end{align}
+
+We employ the formula for the differential cross section for elastic scaterring,
+\begin{equation}
+\dv{\sigma}{\Omega} = \frac{1}{64\pi^2} \frac{\abs{T_{fi}}^2}{s}
+\end{equation}
+so for the $t$-channel scattering of two spin-half particles with electron charge (e.g.~electrons and muons),
+\begin{equation}\boxed{
+\dv{\sigma}{\Omega} = \frac{e^4}{32\pi^2 s} \frac{s^2 + u^2}{t^2}
+}\end{equation}

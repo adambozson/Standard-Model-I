@@ -1,0 +1,87 @@
+\chapter{Experimental Concepts}
+This chapter serves as a reminder of commonly used ideas in high-energy physics (HEP) experiments.
+
+\section{Experimental possibilities}
+In reality there are rather few experimental possibilities for HEP experiments:
+\begin{itemize}
+\item Scatter one particle off another and observe the reaction;
+\item Generate a particle in a reaction and observe its decay;
+\item Detect neutrinos and observe neutrino oscillations;
+\item Measure a particular particle's properties such as mass, charge, spin, parity, lifetime.
+\end{itemize}
+
+\section{Cross section}
+The cross section, $\sigma$, for a particular reaction is proportional to the probability for the interaction to take place. In HEP experiments, it is expressed in the unit barns, where $\SI{1}{\barn} = \SI{1e-28}{\meter^2}$.
+
+\subsection{Beam incident on a target}
+Assume the beam is comprised of bunches with $N_B$ particles per bunch. The beam is incident on a target with area $A$, length $l$ inside the luminous region, and mass density $\rho$. Then the number of target particles seen by the beam is
+\begin{equation}
+N_T = \frac{Al\rho N_A}{m}
+\end{equation}
+where $N_A$ is Avagadro's number and $m$ is the molecular mass, such that $N_A/m$ is the mass of each target particle.
+
+Now we can define the cross section as
+\begin{align}
+P(\text{interaction}) &= (\text{Number of target particles per unit area}) \times \sigma \\
+&= \frac{Al\rho N_A}{m} \times \frac{\sigma}{A} \nonumber \\
+&= \frac{l\rho N_A \sigma}{m}.
+\end{align}
+Therefore the total number of interactions per bunch is given by
+\begin{equation}
+N_I = \frac{l\rho N_A N_B \sigma}{m}.
+\end{equation}
+Now take the target and bunch to contain number densities $n_B$ and $n_T$ of particles, respectively. They have relative speed $u \simeq c$. Then the number of target particles in the luminous region is $n_T V$, so the probability of interaction may now be written
+\begin{equation}
+P(\text{interaction}) = \frac{n_T V \sigma}{A}.
+\end{equation}
+There are $n_B u A$ beam particles passing through the luminous region per second, so the rate of interactions is
+\begin{equation}
+\frac{\dd N_I}{\dd t} = n_B n_T V u \sigma.
+\end{equation}
+
+\subsection{Beam-beam collision}
+For a circular collider, assume a rotation frequency $f$ for both counter-circulating beams consisting of $n$ bunches, each with $N_B$ particles and area $A$. Then the rate of interactions is
+\begin{align}
+\frac{\dd N_I}{\dd t} &= P(\text{collision}) \times (\text{particles per second in one beam}) \\
+&= \frac{N_B \sigma}{A} \times n f N_B \nonumber \\
+&= \frac{n f N_B^2 \sigma}{A} \label{eq:collRate}.
+\end{align}
+
+\section{Luminosity}
+Using the result from \eqref{eq:collRate}, we define the instantaneous luminosity
+\begin{equation}\boxed{
+L \equiv \frac{1}{\sigma} \frac{\dd N_I}{\dd t}
+}\end{equation}
+hence for beam-beam collisions
+\begin{equation}
+L = \frac{n f N_B^2}{A}.
+\end{equation}
+
+In an effort to increase the luminosity, focussing magnets near to the collision regions are used to decrease the bunch area. Also, the number of particles per bunch should be made as large as possible while also maintaining a stable bunch.
+
+Spontaneous luminosity tends to decrease with run time due to collision remnants decreasing the vacuum in the beam pipe and consequently deforming the bunches. An LHC beam has a typical lifetime of around 10--15 hours (the lifetime is the time for $L$ to decay by a factor $e$). At this point the beam is dumped and a new beam is accelerated and injected into the storage ring ready for collisions.
+
+The units of $L$ are typically \si{\per \pico\barn \per \second}. To get a measure of the total number of interactions observed, and hence the amount of data collected, $L$ may be integrated to give the integrated luminosity,
+\begin{equation}\boxed{
+L_\text{int} = \int L \, \dd t
+}
+\end{equation}
+which often has the units of inverse femtobarns, \si{\per \femto \barn}.
+
+\section{Natural units and conversion factors}
+In natural units, we have $\hbar = c = 1$. $c$ is the conversion factor between space and time or mass and energy, and $\hbar$ is the conversion between energy and time. Consider the units of their product:
+\begin{align}
+[\hbar c] &= [ET][LT^{-1}] \nonumber \\
+&= [E][L].
+\end{align}
+Now we have $c = \SI{3e8}{\meter\per\second}$ and $\hbar = \SI{1.05e-34}{\joule\second} = \SI{6.56e-22}{\mega\electronvolt\second}$, so
+\begin{equation}\boxed{
+\hbar c = \SI{197}{\mega \electronvolt \femto \meter} \equiv 1}.
+\end{equation}
+Therefore, we have
+\begin{equation}
+\SI{1}{\giga\electronvolt} = \frac{1000}{\SI{197}{\femto\meter}} = \SI{5.08e15}{\per\meter} = \SI{1.52e24}{\per\second}
+\end{equation}
+\begin{equation}
+\Rightarrow\quad \frac{1}{\si{\giga\electronvolt^2}} = \SI{3.88e-32}{\meter^2} = \SI{0.388}{\milli\barn}.
+\end{equation}

@@ -1,0 +1,491 @@
+\chapter{Relativistic Spin-$\frac{1}{2}$ particles}
+\section{Spin in non-relativistic QM}
+The quantum states corresponding to spin-$\frac{1}{2}$ particles are eigenstates of the spin operator,
+\begin{equation}
+\hat{S}_i = \frac{1}{2}\sigma_i
+\end{equation}
+where $\sigma_i$ are the Pauli matrices,
+\begin{equation}
+\sigma_x = \mqty(0 & 1 \\ 1 & 0), \quad
+\sigma_y = \mqty(0 & -i \\ i & 0), \quad
+\sigma_z = \mqty(1 & 0 \\ 0 & -1).
+\end{equation}
+Application of $\hat{S}_z$ on a state of definite spin projection on the z-axis gives
+\begin{equation}
+\hat{S}_z \ket{s, m} = m \ket{s, m}
+\end{equation}
+and application of the operator $\hat{S}^2 = \sum_i \hat{S}_i^2$ -- which corresponds to the total spin angular momentum of the state -- gives
+\begin{equation}
+\hat{S}^2 \ket{s, m} = s(s+1) \ket{s, m}.
+\end{equation}
+
+The commutator of any two spin operators is
+\begin{equation}
+\left[ \hat{S}_i, \hat{S}_j \right] = i \epsilon_{ijk} \hat{S}_k
+\end{equation}
+and they have the anticommutation relation
+\begin{equation}
+\left\{ \hat{S}_i, \hat{S}_j \right\} = \delta_{ij}.
+\end{equation}
+Therefore, we have that
+\begin{align}
+\sigma_i \sigma_j &= \frac{[ \sigma_i, \sigma_j ] + \{ \sigma_i, \sigma_j \}}{2}  \nonumber \\
+&= \delta_{ij} + i\epsilon_{ijk}\sigma_k.
+\end{align}
+So for any two vectors, $\vec{a}$ and $\vec{b}$,
+\begin{align}
+(\vec{\sigma}\cdot\vec{a})(\vec\sigma\cdot\vec{b}) &= \sigma_i \, a_i \, \sigma_j \, b_j \nonumber \\
+&= \sigma_i \, \sigma_j \, (a_i \, b_j) \nonumber \\
+&= (\delta_{ij} + i\epsilon_{ijk}\sigma_k)(a_i \, b_j) \nonumber \\
+&= a_i \, b_i + i \, \sigma_k \, \epsilon_{kij} \, a_i \, b_j \nonumber \\
+&= \vec{a}\cdot\vec{b} + i \vec{\sigma}\cdot(\vec{a}\times\vec{b}).
+\end{align}
+Applying this result to $\vec{a} = \vec{b} = \vec{p}$, the momentum operator,
+\begin{align}
+(\vec{\sigma}\cdot\vec{p})(\vec{\sigma}\cdot\vec{p}) &= \vec{p}\cdot\vec{p} + i \vec{\sigma}\cdot\underbrace{(\vec{p} \times \vec{p})}_0 \nonumber \\
+&= \abs{\vec{p}}^2. \label{eq:sigmaDotP2}
+\end{align}
+This allows us to express the energy as
+\begin{equation}
+E = \frac{(\vec{\sigma}\cdot\vec{p})(\vec{\sigma}\cdot\vec{p})}{2m} + V
+\end{equation}
+which leads to the correct energy for a particle with a gyromagnetic ratio if the EM coupling is included.
+
+\section{The Dirac equation}
+To avoid the negative energy solutions seen in the treatment of the Klein-Gordon equation, Dirac proposed an equation of motion that is linear in $\pdv{t}$. Also, there should be distinct solutions for particles with opposite spin.
+
+\begin{equation}\boxed{
+\hat{H}\psi = \left( \vec{\alpha}\cdot{\vec{p}} + \beta m \right) \psi
+}\end{equation}
+is the Dirac equation. Here, $\alpha_i$ and $\beta$ are $4\times4$ matrices and $\psi$ therefore a 4-component Dirac spinor.
+
+\subsection{Constraints on $\alpha_i$, $\beta$}
+For the Dirac equation to describe relativistic particles, it must agree with the relation
+\begin{equation}
+E^2 = p^2 + 2m.
+\end{equation}
+Expanding out the operators in the Dirac equation above,
+\begin{align}
+\hat{H}^2 &= \left( \alpha_i p_i + \beta m \right)\left( \alpha_j p_j + \beta m \right) \nonumber \\
+&= \alpha_i \alpha_j p_i p_j + \left\{ \alpha_i, \beta \right\}p_i + \beta^2 m^2.
+\end{align}
+So we see that the matrices $\alpha_i$ and $\beta$ have the constraints:
+\begin{itemize}
+\item $\beta^2 = I_4$
+\item $\alpha_i \alpha_j = \delta_{ij} I_4$
+\item $\left\{ \alpha_i, \beta \right\} = 0 \quad \Rightarrow \quad \alpha_i \beta = - \beta \alpha_i$
+\end{itemize}
+This final constraint further requires that $\alpha_i$ and $\beta$ are all traceless:
+\begin{align*}
+\tr(\alpha_i \beta) &= -\tr(\beta \alpha_i) \\
+\tr(\alpha_i \beta^2) &= -\tr(\beta \alpha_i \beta) \\
+\tr(\alpha_i) &= -\tr(\beta^2 \alpha_i) \quad \text{by cyclicity of the trace} \\
+&= -\tr(\alpha_i) = 0.
+\end{align*}
+Moreover, we require that $\alpha_i$ and $\beta$ are Hermitian.
+
+These constraints still allow for many different representations of the Dirac equation. A commonly used choice is
+\begin{equation}
+\alpha_i = \mqty(\admat[0]{\sigma_i, \sigma_i}), \quad \beta = \mqty(\dmat[0]{I_2, -I_2}).
+\end{equation}
+
+\subsection{Covariant form}
+Using the Schr{\"o}dinger equation, express the Dirac equation in terms of differential operators
+\begin{equation}
+i \pdv{\psi}{t} = -i \vec{\alpha}\cdot\vec{\nabla}\psi + \beta m \psi
+\end{equation}
+and pre-multiply by $\beta$,
+\begin{equation}
+i \beta \pdv{\psi}{t} = -i \beta \vec{\alpha}\cdot\psi + \beta^2 m \psi.
+\end{equation}
+Now we recognise that $\beta^2=I_4$ and define the Dirac gamma matrices $\gamma^0 = \beta$, $\gamma^k = \beta\alpha^k$. This gives
+\begin{equation}\boxed{
+\left(i \gamma^\mu \partial_\mu - m \right)\psi = 0 \label{eq:covDirac}
+}.\end{equation}
+This is the covariant form of the Dirac equation. Explicitly, the Dirac matrices are
+\begin{align*}
+\gamma^0 = \mqty(\dmat[0]{I_2,-I_2}), \quad \gamma^k = \mqty(\admat[0]{\sigma^k, -\sigma^k}).
+\end{align*}
+
+\subsection{Properties of the $\gamma$ matrices}
+Clearly $\gamma^0$ is Hermitian,
+\begin{equation}
+(\gamma^0)^\dagger = \gamma^0
+\end{equation}
+but the $\gamma^k$ are anti-Hermitian,
+\begin{align}
+(\gamma^k)^\dagger &= (\beta\alpha^k)^\dagger \nonumber \\
+&= (\alpha^k)^\dagger \beta^\dagger \nonumber \\
+&= \alpha^k \beta \nonumber \\
+&= -\beta \alpha^k \nonumber \\
+&= -\gamma^k.
+\end{align}
+Also we have that
+\begin{equation}
+(\gamma^0)^2 = I_4
+\end{equation}
+and
+\begin{equation}
+(\gamma^k)^2 = -I_4.
+\end{equation}
+Finally, the anticommutator
+\begin{equation}
+\left\{ \gamma^0, \, \gamma^k \right\} = 0.
+\end{equation}
+
+These properties will prove useful in the following manipulations of the Dirac equation.
+
+\section{Adjoint Dirac equation}
+Taking the Hermitian conjugate of \eqref{eq:covDirac} and expanding out the space and time components,
+\begin{equation}
+-i \partial_0 {\psi^\dagger} \gamma^0 + i \partial_k {\psi^\dagger} \gamma^k - m \psi^\dagger = 0.
+\end{equation}
+Now multiply by $-\gamma^0$ from the right and use $\gamma^0\gamma^k = -\gamma^k\gamma^0$,
+\begin{equation}
+i \partial_0 {\psi^\dagger} \gamma^0 \gamma^0 + i \partial_k \psi^\dagger \gamma^0 \gamma^k + m\psi^\dagger \gamma^0 = 0.
+\end{equation}
+Here is it natural to identify the adjoint Dirac spinor,
+\begin{equation}\boxed{
+\overline{\psi} \equiv \psi^\dagger \gamma^0
+}\end{equation}
+so the adjoint Dirac equation becomes
+\begin{equation}\boxed{
+i\left(\partial_\mu \overline{\psi}\right) \gamma^\mu + m \overline{\psi} = 0 \label{eq:adjDirac}
+}\end{equation}
+
+\subsection{Conserved current}
+Pre-multiply the standard Dirac equation, \eqref{eq:covDirac}, by the adjoint spinor
+\begin{equation}
+i \overline{\psi} \gamma^\mu \left(\partial_\mu \psi\right) - m \overline{\psi}\psi = 0
+\end{equation}
+and post-mulitply the adjoint Dirac equation, \eqref{eq:adjDirac}, by $\psi$,
+\begin{equation}
+i\left(\partial_\mu\overline{\psi}\right)\gamma^\mu \psi + m\overline{\psi}\psi = 0.
+\end{equation}
+Adding these, we see that
+\begin{equation}
+\overline{\psi} \gamma^\mu \left(\partial_\mu \psi\right) + \left(\partial_\mu\overline{\psi}\right)\gamma^\mu \psi = \partial_\mu\left( \overline{\psi} \gamma^\mu \psi \right) = 0
+\end{equation}
+where we can identify the 4-current density,
+\begin{equation}
+j^\mu = \overline{\psi} \gamma^\mu \psi.
+\end{equation}
+Now the probability density is given by
+\begin{align*}
+j^0 &= \overline{\psi}\gamma^0\psi \\
+&= \psi^\dagger \gamma^0 \gamma^0 \psi \\
+&= \abs{\psi}^2
+\end{align*}
+which is always positive. Hence the Dirac equation avoids the negative probabilities we saw in the treatment of the Klein-Gordon equation.
+
+As usual the electromagnetic charge-current density is given by $-e\overline{\psi}\gamma^\mu\psi$ for electrons.
+
+\section{Free particle solutions}
+Consider solutions of the form
+\begin{equation}
+\psi = u(p) \, e^{-ipx}
+\end{equation}
+where $u(p)$ is a 4-component spinor and $p$ and $x$ are understood to be 4-vectors.
+
+Substituting this into the covariant form of the Dirac equation, \eqref{eq:covDirac},
+\begin{align}
+0 &= \left( i \gamma^\mu \partial_\mu - m \right) u(p) \, e^{-ipx} \nonumber \\
+&= \left( \gamma^\mu p_\mu - m \right) u(p) \, e^{-ipx}.
+\end{align}
+
+Now define the Feynman slash notation, $\fsl{p} \equiv \gamma^\mu p_\mu$. Solutions of the above equation are given by spinors $u(p)$ that satisfy
+\begin{equation}
+(\fsl{p} - m) u(p) = 0.
+\end{equation}
+
+To find these solutions, it is helpful to return to the original $\alpha_i, \beta$ matrices. Do this by expanding out the $\fsl{p}$ and pre-multiplying by $\gamma^0$:
+\begin{align}
+\gamma^0(\fsl{p}-m) &= \gamma^0 \gamma^0 E - \gamma^0 \gamma^k p_k - \gamma^0 m \nonumber \\
+&= E - \alpha^k p^k - \beta m
+\end{align}
+so we look for solutions of
+\begin{equation}
+\left( E - \alpha^k p_k - \beta m \right) u(p) = 0.
+\end{equation}
+
+\subsection{Particles at rest}
+For a particle at rest $p_k=0$ so we have to solve
+\begin{equation}
+\left(E - \beta m \right) u(p) = 0.
+\end{equation}
+Solutions exist for
+\begin{equation}
+\mdet{\dmat[0]{(E-m)I_2, -(E+m)I_2}} = 0
+\end{equation}
+which has energy solutions $E = \pm m$. We have not escaped the negative energy solutions after all! In fact, this leads to four distinct solutions for the spinor
+\begin{equation}
+u_{1,2} = \mqty(\chi_\pm \\ 0) , \quad u_{3,4} = \mqty(0 \\ \chi_\pm) \quad \text{where} \quad \chi_+ = \mqty(1 \\ 0), \quad \chi_- = \mqty(0 \\ 1). \label{eq:solutionsAtRestDirac}
+\end{equation}
+It is simple to see that $u_{1,2}$ are associated with positive energy states and $u_{3,4}$ with negative energy states. Furthermore, the spinors $\chi_\pm$ correspond to particles with spin projections $\pm \frac{1}{2}$.
+
+\subsection{Moving particle solutions}
+Now consider the case where $p_k \neq 0$. This gives the eigenvalue problem
+\begin{equation}
+\left[ \mqty(\admat[0]{\vec{\sigma}, \vec{\sigma}}) \cdot \vec{p} + \mqty(\dmat[0]{I_2, I_2}m) \right] \mqty(u_A \\ u_B) = E \mqty(u_A \\ u_B)
+\end{equation}
+or the simultaneous equations
+\begin{align}
+u_A &= \frac{\vec{\sigma}\cdot\vec{p}}{E-m} \, u_B \\
+u_B &= \frac{\vec{\sigma}\cdot\vec{p}}{E+m} \, u_A.
+\end{align}
+There are still infinitely many solutions but $u_B$ is determined from $u_A$ or vice-versa. To agree with our choices for the spinor at rest, \eqref{eq:solutionsAtRestDirac}, we choose that for positive energy solutions
+\begin{equation}
+u_{1,2}(p) = \mathcal{N} \mqty(\chi_\pm \\ \frac{\vec{\sigma}\cdot\vec{p}}{E+m} \chi_\pm)
+\end{equation}
+and for negative energies, $E = -\abs{E} < 0$,
+\begin{equation}
+u_{1,2}(p) = \mathcal{N} \mqty(-\frac{\vec{\sigma}\cdot\vec{p}}{\abs{E}+m} \chi_\pm \\ \chi_\pm)
+\end{equation}
+
+\subsection{Antiparticles}
+So far we have seen that there are four distinct solutions to the Dirac equation, accounting for each spin and positive and negative energy states. In keeping with the Feynman-Stueckelberg interpretation, we ought to demonstrate that the negative energy solutions of the Dirac equation correspond to the positron.
+
+The full spinor states for the negative energy solutions are
+\begin{align}
+\psi &= u_{3,4}(p) \, e^{-ipx} \nonumber \\
+&= u_{3,4}(p) \, \exp[-i(Et - \vec{p}\cdot\vec{x})] \nonumber \\
+&= u_{3,4}(p) \, \exp[i(\abs{E}t + \vec{p}\cdot\vec{x})]
+\end{align}
+so again the negative energy solution can be interpreted as a positive energy particle travelling backwards in time and space. Hence, we can write the spinor as
+\begin{equation}
+\phi = v_{1,2}(p) e^{-ipx}
+\end{equation}
+where $v_{1,2}(p) = u_{4,3}(-p)$ and this describes a positive energy particle travelling forwards through time. Note that since what we have done is essentially a $CT$ (or equivalently $P$) transformation, the spin states are reversed such that
+\begin{equation}
+v_1(p) = \mathcal{N} \mqty(\frac{\vec{\sigma}\cdot\vec{p}}{E+m} \chi_- \\ \chi_-)
+\end{equation}
+corresponds to a spin \emph{up} positron, and
+\begin{equation}
+v_2(p) = \mathcal{N} \mqty(\frac{\vec{\sigma}\cdot\vec{p}}{E+m} \chi_+ \\ \chi_+)
+\end{equation}
+corresponds to spin down.
+
+\section{Orthogonality and normalisation}
+Without loss of generality, consider electrons travelling along the $z$-axis. Then for a spin-up electron,
+\begin{equation}
+u_1(p) = \mathcal{N} \mqty(1 \\ 0 \\ \frac{p}{E+m} \\ 0)
+\end{equation}
+and for spin-down
+\begin{equation}
+u_2(p) = \mathcal{N} \mqty(0 \\ 1 \\ 0 \\ \frac{-p}{E+m})
+\end{equation}
+
+Consider two electron wavefunctions, $\psi_1$, $\psi_2$, with opposite spin. Their overlap is given by
+\begin{equation}
+\int \psi_1^\dagger \psi_2 \, \dd[3]{\vec{x}}.
+\end{equation}
+Now
+\begin{equation}
+\psi_1^\dagger \psi_2 = \mathcal{N}^* \mathcal{N} \, \mqty(1, \, 0, \, \frac{p}{E+m}, \, 0) \mqty(0 \\ 1 \\ 0 \\ \frac{-p}{E+m}) = 0
+\end{equation}
+and therefore the overlap is zero. This shows that the solutions to the Dirac equation are orthogonal.
+
+The normalisation condition is given by
+\begin{equation}
+2E = \int_V \psi_1^\dagger \psi_1 \, \dd[3]{\vec{x}}.
+\end{equation}
+For a spin-up electron travelling along the $z$-axis,
+\begin{align}
+\psi_1^\dagger \psi_1 &= \abs{\mathcal{N}}^2 \, \mqty(1, \, 0, \, \frac{p}{E+m}, \, 0) \mqty(1 \\ 0 \\ \frac{p}{E+m} \\ 0) \nonumber \\
+&= \abs{\mathcal{N}}^2 \, \left( 1+\frac{p^2}{(E+m)^2} \right) \nonumber \\
+&= \abs{\mathcal{N}}^2 \, \left( 1+\frac{E-m}{E+m} \right) \nonumber \\
+&= \abs{\mathcal{N}}^2 \, \frac{2E}{E+m}
+\end{align}
+Therefore the normalisation condition gives
+\begin{equation}
+2E = \mathcal{N}^2 \, \frac{2E}{E+m} \, V
+\end{equation}
+\begin{equation}
+\Rightarrow \quad \mathcal{N} = \sqrt{\frac{E+m}{V}}
+\end{equation}
+Often we will use $V=1$ for convenience.
+
+\section{Helicity}
+We would like a way to describe the spin of a Dirac particle that is consistent in time. Such a good quantum number must commute with the Dirac Hamiltonian, $\hat{H}$, which the usual QM operator $\hat{S}$ does not. To find a suitable operator, it is instructive to expand out the Hamiltonian. According to the Dirac equation,
+\begin{align}
+\hat{H} \mqty(u_A \\ u_B) &= \left( \vec{\alpha}\cdot\vec{p} + \beta m \right) \mqty(u_A \\ u_B) \nonumber \\
+&= \mqty(m & \vec{\sigma}\cdot\vec{p} \\ \vec{\sigma}\cdot\vec{p} & -m)\mqty(u_A \\ u_B)
+\end{align}
+where it is to be understood that $m$ stands for $\smqty(m & 0 \\ 0 & m)$. We see from the matrix form of the Dirac Hamiltonian that $\vec{\sigma}\cdot\vec{p}$ commutes with $\hat{H}$ and hence there exists a corresponding conserved quantity.
+
+\subsection{Helicity}
+Define the helicity operator
+\begin{equation}\boxed{
+h \equiv \frac{1}{2} \vec{\sigma}\cdot\hat{\vec{p}}
+}\end{equation}
+where $\hat{\vec{p}} = \vec{p}/\abs{\vec{p}}$. Notice that $\vec{\sigma}/2 = \vec{S}$ so that $h = \vec{S}\cdot\hat{\vec{p}}$ is nothing but the projection of the particle's spin along its direction of travel.
+
+To find the spectrum of helicities, we solve the eigenvalue problem for the matrix $\frac{1}{2} \vec{\sigma}\cdot\hat{\vec{p}}$. This is most easily done by writing out the momentum in polar coordinates:
+\begin{equation}
+\hat{\vec{p}} = \mqty(\sin\theta\cos\phi \\ \sin\theta\sin\phi \\ \cos\theta)
+\end{equation}
+then
+\begin{equation}
+\vec{\sigma}\cdot\hat{\vec{p}} = \mqty(\cos\theta & \sin\theta \, e^{-i\phi} \\
+\sin\theta \, e^{i\phi} & -\cos\theta).
+\end{equation}
+This gives the eigenvalue problem,
+\begin{equation}
+\frac{1}{2} \mqty(\cos\theta & \sin\theta \, e^{-i\phi} \\
+\sin\theta \, e^{i\phi} & -\cos\theta) \mqty(u_A \\ u_B) = \lambda \mqty(u_A \\ u_B)
+\end{equation}
+which has the characteristic equation
+\begin{equation}
+-\left( \cos\theta - 2\lambda \right) \left( \cos\theta + 2\lambda \right) - \sin^2\theta = 0
+\end{equation}
+with solutions
+\begin{equation}
+\lambda_\pm = \pm\frac{1}{2}.
+\end{equation}
+
+\section{The $\gamma^5$ matrix}\label{sec:gammaMatrix}
+Define the useful $\gamma^5$ matrix
+\begin{equation}
+\gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3.
+\end{equation}
+In the Dirac-Pauli representation, it takes the form
+\begin{equation}
+\gamma^5 = \mqty(0 & I_2 \\ I_2 & 0)
+\end{equation}
+with the properties
+\begin{align}
+(\gamma^5)^\dagger &= \gamma^5 \\
+(\gamma^5)^2 &= I_4 \\
+\gamma^5 \gamma^\mu &= -\gamma^\mu \gamma^5.
+\end{align}
+
+Now consider the action of $\gamma^5$ on a solution of the Dirac equation,
+\begin{equation}
+\gamma^5 \mqty(u_A \\ u_B) = \mqty(0 & I_2 \\ I_1 & 0) \mqty(\chi \\ \frac{\vec{\sigma}\cdot\vec{p}}{E+m} \chi) = \mqty(\frac{\vec{\sigma}\cdot\vec{p}}{E+m} \chi \\ \chi).
+\end{equation}
+For ultra-relativistic particles $m \rightarrow 0$ and hence $\frac{\vec{\sigma}\cdot\vec{p}}{E+m} \rightarrow \vec{\sigma}\cdot\hat{\vec{p}}$. We also use the fact that $(\vec{\sigma}\cdot\hat{\vec{p}})(\vec{\sigma}\cdot\hat{\vec{p}}) = I_2$, as shown in \eqref{eq:sigmaDotP2}.
+\begin{align}
+\gamma^5 \mqty(u_A \\ u_B) &= \mqty(\left(\vec{\sigma}\cdot\hat{\vec{p}}\right) \chi \\ \chi) \nonumber \\
+&= \mqty(\left(\vec{\sigma}\cdot\hat{\vec{p}}\right) \chi \\ \left(\vec{\sigma}\cdot\hat{\vec{p}}\right)^2 \chi) \nonumber \\
+&= \vec{\sigma}\cdot\hat{\vec{p}} \, \mqty(\chi \\ \left(\vec{\sigma}\cdot\hat{\vec{p}}\right)\chi) \nonumber \\
+&= \vec{\sigma}\cdot\hat{\vec{p}} \, \mqty(u_A \\ u_B).
+\end{align}
+Therefore, in the limit where $m \rightarrow 0$, the helicity operator becomes $h \rightarrow {\gamma^5/2}$.
+
+Define the chiral projection operators,
+\begin{equation}
+P_R = \frac{1}{2}\left( 1 + \gamma^5 \right), \quad P_L = \frac{1}{2}\left( 1 - \gamma^5 \right).
+\end{equation}
+In the limit where $m \rightarrow 0$, a helicity eigenstate corresponds to a chiral state -- i.e.~$h=1$ is a right-handed state. For small $m$, a helicity eigenstate will be mostly one chirality plus a small amount of the other.
+
+\section{Completeness relations}
+The completeness relations are used extensively in the evaluation of Feynman diagrams.
+
+Sum over the spin states,
+\begin{align}
+\sum_{s=\pm} u_s(p) \, \overline{u}_s(p) &= \sum_{s=\pm} (E+m) \, \mqty(\chi_s \\ \frac{\vec{\sigma}\cdot\vec{p}}{E+m} \chi_s) \mqty(\chi_s^\dagger, \, -\frac{\left(\vec{\sigma}\cdot\vec{p}\right)^\dagger}{E+m} \chi_s^\dagger) \nonumber \\
+&= \sum_{i=\pm} (E+m) \, \mqty(\chi_s \chi_s^\dagger & -\frac{\left(\vec{\sigma}\cdot\vec{p}\right)^\dagger}{E+m} \chi_s \chi_s^\dagger \\ \frac{\vec{\sigma}\cdot\vec{p}}{E+m} \chi_s \chi_s^\dagger & -\frac{E-m}{E+m} \chi_s \chi_s^\dagger)
+\end{align}
+where for the bottom-right element we have used $(\vec{\sigma}\cdot\vec{p})^2 = \abs{p}^2 = E^2 - m^2 = (E-m)(E+m)$.
+
+The sum over spin states can be easily performed:
+\begin{equation}
+\sum_{i=\pm} \chi_s \chi_s^\dagger = \mqty(1 \\ 0) \mqty(1,\, 0) + \mqty(0 \\ 1) \mqty(0,\, 1) = \mqty(\dmat[0]{1,1}) = I_2
+\end{equation}
+So we have that
+\begin{align}
+\sum_{i=\pm} u_s(p) \, \overline{u}_s(p) &= (E+m) \, \mqty(I_2 & -\frac{\vec{\sigma}\cdot\vec{p}}{E+m} \\ \frac{\vec{\sigma}\cdot\vec{p}}{E+m} & \frac{m-E}{E+m}) \nonumber \\
+&= \mqty(E+m & -\vec{\sigma}\cdot\vec{p} \\ \vec{\sigma}\cdot\vec{p} & m-E) \label{eq:spinSum}
+\end{align}
+
+Now consider the matrix given by
+\begin{align}
+\fsl{p} + m &= \gamma^\mu p_\mu + m \\
+&= \mqty(E & 0 \\ 0 & -E) - \mqty(0 & \vec{\sigma}\cdot\vec{p} \\ -\vec{\sigma}\cdot\vec{p} & 0) + \mqty(\dmat[0]{m,m}) \nonumber \\
+&= \mqty(E+m & -\vec{\sigma}\cdot\vec{p} \\ \vec{\sigma}\cdot\vec{p} & m-E) \label{eq:pslash+m}
+\end{align}
+
+Comparing \eqref{eq:spinSum} and \eqref{eq:pslash+m} gives the completeness relation
+\begin{equation}\boxed{
+\sum_{i=\pm} u_s(p) \, \overline{u}_s(p) = \fsl{p} + m \label{eq:completeness}
+}.\end{equation}
+
+Similarly for antiparticles,
+\begin{equation}
+\sum_{i=\pm} v_s(p) \, \overline{v}_s(p) = \fsl{p} - m.
+\end{equation}
+
+\section{Forms of interaction in Dirac theory}
+\textbf{Scalar} (even parity): $\overline{\psi} \psi$
+
+\textbf{Pseudoscalar} (odd parity): $\overline{\psi} \gamma^5 \psi$
+
+\textbf{Polar vector} (odd parity): $\overline{\psi} \gamma^\mu \psi$. Fermi $\beta$ decay is described by a polar vector current.
+
+\textbf{Axial vector} (even parity): $\overline{\psi}\gamma^5 \gamma^\mu \psi$. The weak interaction is a mixture of polar and axial vector interactions.
+
+\textbf{Tensor}: $\overline{\psi}\sigma^{\mu\nu} \psi$. This type of interaction has not been observed by experiment, although does provide a description of the mechanism behind the anomalous magnetic moment. Spin-2 gravitons would have interactions of this form.
+
+\section{Trace theorems}\label{sec:Trace}
+In scattering problems, we will often see calculations involving the traces of $\gamma$-matrices. What follows will simplify these calculations with some algebraic results.
+
+We start with the facts that traces are associative:
+\begin{equation}
+\Tr(A+B) \equiv \Tr(A) + \Tr(B)
+\end{equation}
+and are unchanged by cyclic permutations of the argument:
+\begin{equation}
+\Tr(AB \ldots YZ) \equiv \Tr(ZAB \ldots Y).
+\end{equation}
+
+Also the algebra of the $\gamma$-matrices is defined by their anticommutation relation,
+\begin{equation}
+\gamma^\mu \gamma^\nu + \gamma^\nu \gamma^\mu = 2g^{\mu\nu} I_4 \label{eq:gammaAnticommute}
+\end{equation}
+where the presence of the identity has been made explicit. Taking the trace,
+\begin{equation}
+\Tr(\gamma^\mu \gamma^\nu) + \Tr(\gamma^\nu \gamma^\mu) = 2g^{\mu\nu} \Tr(I_4)
+\end{equation}
+and using the cyclicity of the trace,
+\begin{equation}\boxed{
+\Tr(\gamma^\mu \gamma^\nu) = 4g^{\mu\nu} \label{eq:trace2}
+}.\end{equation}
+
+The trace of any odd number of $\gamma$-matrices can be shown to be zero by inserting $\gamma^5 \gamma^5 = I_4$ into the trace. For example,
+\begin{align}
+\Tr(\gamma^\mu \gamma^\nu \gamma^\rho) &= \Tr(\gamma^5 \gamma^5 \gamma^\mu \gamma^\nu \gamma^\rho) \nonumber \\
+&= \Tr( \gamma^5 \gamma^\mu \gamma^\nu \gamma^\rho \gamma^5) \nonumber \\
+&= -\Tr(\gamma^5 \gamma^5 \gamma^\mu \gamma^\nu \gamma^\rho)
+\end{align}
+where the last line is reached by commuting the last $\gamma^5$ through three $\gamma$-matrices, each time introducing a factor $-1$. Hence we have that $\Tr(\gamma^\mu \gamma^\nu \gamma^\rho) = -\Tr(\gamma^\mu \gamma^\nu \gamma^\rho)$ which can only be true for
+\begin{equation}\boxed{
+\Tr(\gamma^\mu \gamma^\nu \gamma^\rho) = 0
+}.\end{equation}
+This is easily extended to the case for any odd number of $\gamma$-matrices.
+
+The trace of four $\gamma$-matrices can be obtained using \eqref{eq:gammaAnticommute}:
+\begin{align}
+\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma &= \left( 2g^{\mu\nu} - \gamma^\nu \gamma^\mu \right) \gamma^\rho \gamma^\sigma \nonumber \\
+&= 2g^{\mu\nu}\gamma^\rho\gamma^\sigma - 2g^{\mu\rho}\gamma^\nu\gamma^\sigma + \gamma^\nu\gamma^\rho\gamma^\mu\gamma^\sigma \nonumber \\
+&= 2g^{\mu\nu}\gamma^\rho\gamma^\sigma - 2g^{\mu\rho}\gamma^\nu\gamma^\sigma + 2g^{\mu\sigma}\gamma^\nu\gamma^\rho - \gamma^\nu\gamma^\rho\gamma^\sigma\gamma^\mu
+\end{align}
+Hence,
+\begin{equation}
+\Tr(\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) = g^{\mu\nu}\Tr(\gamma^\rho\gamma^\sigma) - g^{\mu\rho}\Tr(\gamma^\nu\gamma^\sigma) + g^{\mu\sigma}\Tr(\gamma^\nu \gamma^\rho)
+\end{equation}
+Evaluating the traces with \eqref{eq:trace2} gives the result
+\begin{equation}\boxed{
+\Tr(\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) = 4g^{\mu\nu}g^{\rho\sigma} - 4g^{\mu\rho}g^{\nu\sigma} + 4g^{\mu\sigma}g^{\nu\rho}
+}\end{equation}
+
+The full set of trace theorems is:
+\begin{itemize}
+\item $\Tr(I_4) = 4$;
+\item the trace of any odd number of $\gamma$-matrices is zero;
+\item $\Tr(\gamma^\mu \gamma^\nu) = 4g^{\mu\nu}$;
+\item $\Tr(\gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) = 4g^{\mu\nu}g^{\rho\sigma} - 4g^{\mu\rho}g^{\nu\sigma} + 4g^{\mu\sigma}g^{\nu\rho}$;
+\item the trace of $\gamma^5$ multiplied by an odd number of $\gamma$-matrices is zero;
+\item $\Tr(\gamma^5) = 0$;
+\item $\Tr(\gamma^5 \gamma^\mu \gamma^\nu) = 0$; and
+\item $\Tr(\gamma^5 \gamma^\mu \gamma^\nu \gamma^\rho \gamma^\sigma) = 4i \varepsilon^{\mu\nu\rho\sigma}$, where $\varepsilon^{\mu\nu\rho\sigma}$ is the antisymmetric tensor under the exchange of any two indices.
+\end{itemize}

@@ -1,0 +1,110 @@
+\chapter{\Pelectron \Ppositron annihilation}
+The annihilation process \HepProcess{\Pelectron \Ppositron \to \Pmuon \APmuon} is related to the scattering process \HepProcess{\Pelectron \Pmuon \to \Pelectron \Pmuon} as can be seen by comparing their diagrams. The diagram for the annihilation process is
+\begin{figure}[th]
+\centering
+\include{figures/annihilate}
+\caption{Diagram for the s-channel electron annihilation process to positrons.}
+\end{figure}
+which is the same as for t-channel elastic scattering, only rotated by $90^\circ$. The rotation is equivalent to exchanging $k^\prime$ with $-p$. The consequence of this transformation is simply that the roles of $s$ and $t$ are swapped in the probability $\abs{T_{fi}}^2$, so the differential cross section for the annihilation process is
+\begin{equation}\boxed{
+\dv{\sigma}{\Omega} = \frac{e^4}{32\pi^2s} \frac{t^2+u^2}{s^2}
+}\end{equation}
+
+\section{Total cross section}
+We wish to integrate the differential cross section in the limit where the masses of the particles involved become zero.
+
+Write the kinematic Mandelstam variables in term of energies:
+\begin{align}
+s = (k + p)^2 &\approx 2k \cdot p \nonumber \\
+&= 2 \mqty(E_{\Pelectron} \\ E_{\Pelectron}) \cdot \mqty(E_{\Ppositron} \\ -E_{\Ppositron}) \nonumber \\
+&= 4E_{\Pelectron} E_{\Ppositron}
+\end{align}
+\begin{align}
+t = (k - k^\prime)^2 &\approx -2k\cdot k^\prime \nonumber \\
+&= -2 \mqty(E_{\Pelectron} \\ E_{\Pelectron}) \cdot \mqty(E_{\Pmuon} \\ E_{\Pmuon} \cdot \cos\theta) \nonumber \\
+&= -2 E_{\Pelectron}E_{\Pmuon}(1-\cos\theta)
+\end{align}
+\begin{align}
+u = (k-p^\prime)^2 &\approx -2k\cdot p^\prime \nonumber \\
+&= -2 \mqty(E_{\Pelectron} \\ E_{\Pelectron}) \cdot \mqty(E_{\APmuon} \\ -E_{\APmuon}\cdot \cos\theta) \nonumber \\
+&= -2 E_{\Pelectron}E_{\APmuon} (1+\cos\theta)
+\end{align}
+
+Then the differential cross section becomes
+\begin{align}
+\dv{\sigma}{\Omega} &= \frac{e^4}{32\pi^2s} \frac{4E_{\Pmuon}^2(1-\cos\theta)^2 + 4E_{\APmuon}^2(1+\cos\theta)^2}{16 E_{\Ppositron}^2} \nonumber \\
+&= \frac{e^4}{128\pi^2s} \frac{E_{\Pmuon}^2(1-\cos\theta)^2 + E_{\APmuon}^2(1+\cos\theta)^2}{E_{\Ppositron}^2}
+\end{align}
+
+Now we choose the centre of momentum frame where $E_{\Pelectron} = E_{\Pmuon} = E_{\APelectron} = E_{\APmuon}$ for massless particles. Then the differential cross section becomes
+\begin{equation}
+\dv{\sigma}{\Omega} = \frac{e^4}{64\pi^2s} \left( 1 + \cos^2\theta \right)
+\end{equation}
+
+which can be easily integrated:
+\begin{align}
+\sigma &= \frac{e^4}{64\pi^2s}\int(1+\cos^2\theta) \, \dd{\Omega} \nonumber \\
+&= \frac{e^4}{64\pi^2s} \left( 4\pi + 2\pi\int\limits_{-1}^1 \cos^2\theta \, \dd(\cos{\theta}) \right) \nonumber \\
+&= \frac{e^4}{64\pi^2s} \left( 4\pi + \frac{4\pi}{3} \right) \nonumber \\
+&= \frac{e^4}{12\pi s}.
+\end{align}
+
+Finally we use that the fine structure constant $\alpha = \frac{e^2}{4\pi}$ (see \eqref{eq:fineStructure}) to get
+\begin{equation}\boxed{
+\sigma = \frac{4\pi\alpha^2}{3s}.
+}\end{equation}
+
+\section{$R$ at \Pelectron \Ppositron colliders}
+The process $\HepProcess{\Pelectron\Ppositron \to \Pmuon\APmuon}$ may be generalised to include other allowed particles in the final state, shown in Figure~\ref{fig:generalAnnihilation}.
+\begin{figure}[th]
+\centering
+\include{figures/generalAnnihilation}
+\caption{The diagram for general $s$-channel \Pelectron \Ppositron annihilation with final state fermions in QED.\label{fig:generalAnnihilation}}
+\end{figure}
+The process is exclusively $s$-channel except in the case for final-state electrons, where $t$- and $u$- channels contribute, and in fact dominate at low energies. Also, muons are simpler to detect. For these reasons, we use the process with final-state muons as a `standard candle' and define the ratio $R$,
+\begin{equation}\boxed{
+R = \frac{\sigma( \Pelectron\Ppositron \to \Pquark\APquark )}{\sigma ( \Pelectron\Ppositron \to \Pmuon\APmuon )}.
+}\end{equation}
+
+At low energies, only \Pup and \Pdown quarks are accessible in the final state. They instantly hadronise into pions or $\rho$ mesons, for example. The cross section is proportional to the square of the quark charge and we simply add the cross sections for distinguishable final states,
+\begin{equation}
+R_{\Pup\Pdown} = \left[\left(\frac{2}{3}\right)^2 + \left(\frac{-1}{3}\right)^2 \right] \times 3 = \frac{5}{3}
+\end{equation}
+where the factor of 3 is due to colour multiplicity of the quark states. In this simple treatment, $R$ increases in steps to $\frac{6}{3}$, $\frac{10}{3}$, $\frac{11}{3}$ up to the CM energy $\sqrt{s} = 2m_{\Pbottom} \simeq \SI{9.3}{\giga\electronvolt}$. When the final state quarks combine to form resonances (e.g.~\Prho: \SI{770}{\mega\electronvolt}, \PJpsi: \SI{3.1}{\giga\electronvolt}, \PUpsilonFourS: \SI{10.6}{\giga\electronvolt}) $R$ increases above these predictions due to the enhanced cross section.
+
+The Barbar \Pelectron \Ppositron collider operated at the \PUpsilonFourS resonance, allowing measurement of $R$ at about 3.84 (expected 3.67). The higher measured value can be accounted for by QCD higher order $O(\alpha_S)$ QCD corrections due to gluon radiation.
+
+Similarly, the LEP collider operated at the $\PZ$ resonance $\sqrt{s} = \SI{91}{\giga\electronvolt}$. An analogous quantity $R_Z$ is defined
+\begin{equation}
+R = \frac{\sigma( \PZ \to \Pquark\APquark )}{\sigma ( \PZ \to \Pmuon\APmuon )}.
+\end{equation}
+To lowest order, $P_Z = 20.09$ and it is measured to be $20.79 \pm 0.04$. The $3.5\%$ discrepancy is fully explained by higher order QCD corrections involving gluons.
+\begin{figure}[hb]
+\centering
+\include{figures/Zgluonrad}
+\caption{$\PZ$ decay into quark final states with gluon radiation. This diagram contributes to the $O(\alpha_S)$ QCD correction to $R_Z$.\label{fig:Zgluonrad}}
+\end{figure}
+
+\section{Helicity conservation at high energies}
+Recall the chiral projection operators from Section \ref{sec:gammaMatrix},
+\begin{equation*}
+P_R = \frac{1}{2}\left( 1 + \gamma^5 \right), \quad P_L = \frac{1}{2}\left( 1 - \gamma^5 \right).
+\end{equation*}
+As discussed above, in the limit where $m \rightarrow 0$, helicity and chirality have the same eigenstates. The left-handed chiral state is given, for example, by $U_L = P_L U$.
+
+Using the fact that $\gamma^5$ -- and hence $P_L$ and $P_R$ -- is Hermitian and $\gamma^\mu \gamma^5 = -\gamma^5 \gamma^\mu$, we see that $P_L\gamma^\mu = \gamma^\mu P_R$ and therefore
+\begin{equation}
+\overline{U}_L = (P_L U)^\dagger \gamma^0 = U^\dagger P_L \gamma^0 = U^\dagger \gamma_0 P_R = \overline{U} P_R.
+\end{equation}
+Similarly, $\overline{U}_R = \overline{U}P_L$.
+
+Now consider the QED current
+\begin{equation}
+\overline{U}\gamma^\mu{U} = (\overline{U}_L + \overline{U}_R)\gamma^\mu(U_L + U_R)
+\end{equation}
+and look at a cross-term specifically,
+\begin{align}
+\overline{U}_L \gamma^\mu U_R &= \overline{U} P_R \gamma^\mu P_R U \nonumber \\
+&= \overline{U} \gamma^\mu P_L P_R U \nonumber \\
+&= 0\end{align}
+because $P_LP_R=0$. This means there are no chirality-changing currents in QED and hence QED conserved chirality, or equivalently helicity in the high energy limit.

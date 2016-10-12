@@ -1,0 +1,151 @@
+\chapter{Special relativity}
+The study of high energy physics involves particles travelling at speeds close to $c$ and often with energies much greater than their mass. Therefore, much of the notation and calculations used stem from a proper treatment of special relativity (SR).
+
+\section{4-vectors}
+SR places space and time on an equal footing and they adopt the same units in the system of natural units. We combine the information in time and space as components in a 4-vector, for example,
+\begin{align*}
+x^\mu = \mqty(t \\ \vec{r}), \quad p^\mu = \mqty(E \\ \vec{p}).
+\end{align*}
+Note that in contravariant form (with the index up), 4-vectors are written as column vectors.
+
+The metric tensor is a symmetric matrix that tells us how to link space and time. In the case of special relativity, it is simply a diagonal matrix\footnote{The $(+,-,-,-)$ signature is most often used in high energy physics since most 4-vector quantities we deal with will be timelike. By contrast, general relativity usually uses the $(-,+,+,+)$ signature. Using either signature is valid, but it is important to not confuse them.},
+\begin{equation}
+g_{\mu\nu} = \mqty(\dmat{1,-1,-1,-1}) = g^{\mu\nu}.
+\end{equation}
+The metric tensor may be used to perform index gymnastics to raise or lower an index. For example, we can find the covariant forms of the above 4-vectors,
+\begin{align*}
+x_{\mu} = g_{\mu\nu}x^\nu = (t,\, -\vec{r}), \quad p_{\mu} = g_{\mu\nu}p^\nu = (E,\, -\vec{p}).
+\end{align*}
+
+The scalar product of two 4-vectors is given by
+\begin{equation}
+a_{\mu} b^{\mu} = g_{\mu\nu}a^{\nu}b^{\mu} = b_{\mu} a^{\mu}.
+\end{equation}
+
+Note the scalar product is invariant to which vector is covariant. Often, when only dealing with scalar products, we use the notation of a capital letter with no index for a 4-vector: $X$, $P$, $A$, etc. Then a scalar product may be written, for instance, as $XX = X^2$.
+
+Finally, introduce the 4-vector derivative in covariant form,
+\begin{equation}
+\partial_\mu = \left( \pdv{t},\, \vec{\nabla} \right).
+\end{equation}
+then its square length is
+\begin{equation}
+\partial^2 = \partial_\mu \partial^\nu = \left(\pdv{t}\right)^2 - \nabla^2.\label{eq:nablaSquared}
+\end{equation}
+
+\section{Lorentz transformation}
+The Lorentz transformation is given by $x^\mu \rightarrow (x^\prime)^\mu$ where
+\begin{equation}
+\mqty(t^\prime \\ x^\prime \\ y^\prime \\ z^\prime) = \mqty(\dmat{\gamma&{-\beta\gamma}\\{-\beta\gamma}&\gamma, 1, 1}) \mqty(t\\ x\\ y\\ z)
+\end{equation}
+for a 4-vector boosted by speed $\beta$ along the $x$-axis. For completeness, we define $\gamma$ here,
+\begin{equation}
+\gamma = \frac{1}{\sqrt{1-\beta^2}}.
+\end{equation}
+
+The scalar product $a_\mu b^\mu$, and in fact any fully-contracted quantity, is invariant under Lorentz transformations, since they do not depend on the coordinates.
+
+\section{The light cone}
+Consider two events with 4-coordinates $X$ and $Y$. The square of their spacetime separation is given by
+\begin{equation}
+s^2 = (X-Y)^2 = (t_x - t_y)^2 - (\vec{x} - \vec{y})^2.
+\end{equation}
+Along the surface of the light cone, $s=0$. This condition gives
+\begin{equation}
+t_x - t_y = \abs{\vec{x} - \vec{y}}
+\end{equation}
+i.e.~if a flash of light is emitted at $X$, it reaches $\vec{y}$ at $t_y$. If $s^2 > 0$, then $t_x - t_y > \abs{\vec{x} - \vec{y}}$ and a light pulse emitted at $X$ reaches $\vec{y}$ before $t_y$. Therefore, the events are causally connected and their separation is said to be timelike. For $s^2<0$, the events are have spacelike separation and are causally disjoint.
+
+\section{Relativistic kinematics}
+In particle physics, there are two processes we could consider. Firstly, the decay of one particle into daughter particles,
+\begin{equation}
+A \to B + C + \ldots
+\end{equation}
+where the simplest case is that of two-body decay, \HepProcess{A\to B+C}. Here the centre of mass (CM) energy is simply the mass of the parent particle, $m_A$. Secondly, a scattering process,
+\begin{equation}
+A + B \to C + D + \ldots
+\end{equation}
+where the CM energy is given by $E_{CM}^2 = (P_A + P_B)^2 = (P_C + P_D + \ldots) ^2$ (recall that $P_i$ is a 4-momentum).
+
+\subsection{Fixed target particle production}
+Consider the process
+\begin{equation}
+A + B \to C
+\end{equation}
+where the target $B$ is at rest in the laboratory frame. Therefore, $P_B = (m_B, \vec{0})$.
+
+The centre of mass energy is given by
+\begin{align}
+E_{CM}^2 &= (P_A + P_B)^2 \\
+&= E_A^2 + 2E_A m_B + m_B^2 - \abs{\vec{p_A}}^2
+\end{align}
+Use that $E_A^2 - \abs{\vec{p_A}}^2 = m_A^2$,
+\begin{equation}
+E_{CM}^2 = m_A^2 + m_B^2 + 2E_A m_V
+\end{equation}
+A typical beam has energy much greater than either of the masses involved, so we may write
+\begin{equation}
+\boxed{
+E_{CM} \approx \sqrt{2 E_A m_B}
+}
+\end{equation}
+
+At the production threshold, $E_{CM} = E_C$. This means that for a proton target ($m_B \sim \SI{1}{\giga\electronvolt}$), the incident particle energy required to produce a Higgs boson ($m_C \sim \SI{100}{\giga\electronvolt}$) is about \SI{5}{\tera\electronvolt}. For a hadronic beam about one tenth of the beam energy goes into collisions so this would require a \SI{50}{\tera\electronvolt} beam. In fact, fixed-target collisions rarely even produce \Pbottom quarks. This means fixed-target experiemnts are not suitable for modern high-energy discoveries with present accelerator technology, and we must instead look towards beam-beam colliders.
+
+\subsection{Beam-beam collisions}
+In this type of collider, two beams are collided with opposite momenta:
+\begin{align*}
+P_A = \mqty(E_A \\ \vec{p}), \quad P_B = \mqty(E_B \\ -\vec{p})
+\end{align*}
+so the CM frame is the laboratory frame:
+\begin{equation}
+P_{CM} = P_A + P_B = \mqty(E_{CM} \\ \vec{0}) = \mqty(E_A + E_B \\ \vec{0}).
+\end{equation}
+We want to find the required energy for one of the beams, $E_A$, as a function of $E_{CM}$. Start by considering the product
+\begin{align}
+P_A P_{CM} &= \left( E_A,\, \vec{p} \right) \mqty(E_{CM} \\ \vec{0}) = E_A E_{CM} \\
+\text{also,}\quad P_A P_{CM} &= P_A (P_A + P_B) = P_A^2 + P_A P_B \label{eq:P_AP_CM}
+\end{align}
+so, using $P_A^2 = m_A^2$, we have
+\begin{equation}
+E_A E_{CM} = m_A^2 + P_A P_B. \label{eq:E_AE_CM}
+\end{equation}
+To determine $P_A P_B$ consider
+\begin{align}
+E_{CM}^2 &= P_{CM}^2 \\
+&= (P_A + P_B)^2 \\
+&= m_A^2 + m_B^2 + 2P_A P_B.
+\end{align}
+Substituting this into \eqref{eq:E_AE_CM},
+\begin{align}
+E_A E_{CM} &= m_A^2 + \frac{1}{2}(E_{CM}^2 - m_A^2 - m_B^2) \nonumber \\
+&= \frac{E_{CM}^2 + m_A^2 - m_B^2}{2}
+\end{align}
+therefore,
+\begin{equation}\boxed{
+E_A = \frac{E_{CM}^2 + m_A^2 - m_B^2}{2E_{CM}}.
+}
+\end{equation}
+
+In the case where $m_A = m_B$ this becomes $E_A = E_{CM}/2$.
+
+\section{Mandelstam variables}
+\begin{figure}[ht]
+\centering
+\include{figures/process}
+\caption{Some process \HepProcess{A + B \to C + D}.\label{fig:process}}
+\end{figure}
+Consider some process \HepProcess{A + B \to C + D}. The three Mandelstam variables, $s$, $t$, and $u$ are combinations of the incoming and outgoing 4-momenta. For different diagrams, they are the momentum of the propagator:
+\include{figures/channelTable}
+
+The sum of $s$, $t$, and $u$ gives the sum of the squares of the mass of the four particles,
+\begin{align}
+s +t + u &= (P_A + P_B)^2 + (P_A - P_C)^2 + (P_A - P_D)^2 \\
+&= 3P_A^2 + P_B^2 + P_C^2 + P_D^2 + 2P_A(P_B - P_C - P_D)
+\end{align}
+By conservation of 4-momentum, we have $P_A + P_B$ = $P_C + P_D$, therefore $P_B - P_C - P_D = -P_A$, so
+\begin{align}
+s + t + u &= 3P_A^2 + P_B^2 + P_D^2 + 2P_A(-P_A) \\
+&= P_A^2 + P_B^2 + P_C^2 + P_D^2 \\
+&= m_A^2 + m_B^2 + m_C^2 + m_D^2. \label{eq:madelstamSum}
+\end{align}
