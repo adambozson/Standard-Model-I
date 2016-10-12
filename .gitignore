@@ -1,9 +1,9 @@
+**/*.aux
 *.log
 
 *.mp
 *.1
 *.t1
 
-SM1.aux
 SM1.toc
 SM1.out
