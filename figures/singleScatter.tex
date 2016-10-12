@@ -1,0 +1,15 @@
+\unitlength = 1mm
+\begin{fmffile}{singleScatter}
+    \begin{fmfgraph*}(75,15)
+        
+        \fmfleft{i}
+        \fmfrightn{o}{2}
+        
+        \fmf{fermion,tension=2,label=$\phi$}{i,v}
+        \fmf{fermion,label=$\psi=\phi+\Delta\psi$}{v,o2}
+        \fmf{phantom}{v,o1} 
+        
+        \fmfv{decor.shape=circle,decor.filled=full,decor.size=2thick,label=V,label.angle=90}{v}
+        
+    \end{fmfgraph*}
+\end{fmffile}

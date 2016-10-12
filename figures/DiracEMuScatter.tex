@@ -1,0 +1,20 @@
+\unitlength = 1mm
+\begin{fmffile}{diracemuscatter}
+    \begin{fmfgraph*}(65,20)
+        
+        \fmfleftn{i}{2}
+        \fmfrightn{o}{2}
+        
+        \fmf{fermion,label=\Pmu}{i1,v1,o1}
+        \fmf{fermion,label=\Pe}{i2,v2,o2}
+        \fmf{photon,label=\Pphoton}{v1,v2}
+        
+        \fmfdot{v1,v2}
+        
+        \fmflabel{$k$}{i2}
+        \fmflabel{$p$}{i1}
+        \fmflabel{$k^\prime$}{o2}
+        \fmflabel{$p^\prime$}{o1}
+        
+    \end{fmfgraph*}
+\end{fmffile}

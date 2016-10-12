@@ -1,0 +1,19 @@
+\unitlength = 1mm
+\begin{fmffile}{doubleScatter}
+    \begin{fmfgraph*}(75,15)
+        
+        \fmfleftn{i}{2}
+        \fmfrightn{o}{2}
+        
+        \fmf{fermion,tension=2,label=$\phi$}{i1,v1}
+        \fmf{wiggly}{v1,v2}
+        \fmf{fermion,tension=2,label=$\psi$}{v2,o2}
+        
+        \fmf{phantom,tension=0.5}{i2,v2}
+        \fmf{phantom,tension=0.5}{v1,o1}
+        
+        \fmfv{decor.shape=circle,decor.filled=full,decor.size=2thick,label=V,label.angle=90}{v1}
+        \fmfv{decor.shape=circle,decor.filled=full,decor.size=2thick,label=V,label.angle=90}{v2}
+        
+    \end{fmfgraph*}
+\end{fmffile}

@@ -1,0 +1,23 @@
+\unitlength = 1mm
+\begin{fmffile}{compton_u}
+    \begin{fmfgraph*}(60,20)
+        
+        \fmfleftn{i}{2}
+        \fmfrightn{o}{2}
+        
+        \fmf{fermion,label=\Pe}{i1,v1,v2,o1}
+        \fmf{phantom,tension=0.75}{i2,v1}
+        \fmf{phantom,tension=0.75}{o2,v2}
+        \fmf{photon,label=,tension=0}{i2,v2}
+        \fmf{photon,label=,tension=0}{v1,o2}
+        
+        
+        \fmfdot{v1,v2}
+        
+        \fmflabel{$k$}{i2}
+        \fmflabel{$p$}{i1}
+        \fmflabel{$k^\prime$}{o2}
+        \fmflabel{$p^\prime$}{o1}
+        
+    \end{fmfgraph*}
+\end{fmffile}

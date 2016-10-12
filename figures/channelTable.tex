@@ -1,0 +1,90 @@
+\begin{table}[hb]
+\centering
+\begin{tabular}{ccc}
+\toprule
+Process & Propagator momentum & Mandelstam variable \\
+\midrule
+
+\mbox{
+\begin{fmffile}{s-channel}
+\begin{fmfgraph*}(60,15)
+
+        \fmfleftn{i}{2}
+        \fmfrightn{o}{2}
+        
+        \fmf{plain}{i1,v1,i2} 
+        \fmf{plain}{o1,v2,o2} 
+        
+        \fmf{photon}{v1,v2}
+
+\end{fmfgraph*}
+\end{fmffile}
+}
+
+&{\!$\begin{aligned}
+P_A+P_B \\
+P_C+P_D
+\end{aligned}$} & 
+{\!$\begin{aligned}
+s &= (P_A + P_B)^2 \\
+&= (P_C + P_D)^2
+\end{aligned}$}\\
+
+\mbox{
+\begin{fmffile}{t-channel}
+\begin{fmfgraph*}(60,45)
+
+        \fmfleftn{i}{2}
+        \fmfrightn{o}{2}
+        
+        \fmf{plain}{i1,v1,o1} 
+        \fmf{plain}{i2,v2,o2} 
+        
+        \fmf{photon}{v1,v2}
+
+\end{fmfgraph*}
+\end{fmffile}
+}
+
+&{\!$\begin{aligned}
+P_A-P_C \\
+P_B-P_D
+\end{aligned}$} & 
+{\!$\begin{aligned}
+t &= (P_A - P_C)^2 \\
+&= (P_B - P_D)^2
+\end{aligned}$}\\
+
+\mbox{
+\begin{fmffile}{u-channel}
+\begin{fmfgraph*}(60,45)
+
+        \fmfleftn{i}{2}
+        \fmfrightn{o}{2}
+        
+        \fmf{plain,tension=4}{i1,v1}
+        \fmf{plain}{v1,o2} 
+        \fmf{plain,tension=4}{i2,v2}
+        \fmf{plain}{v2,o1}
+        
+        \fmf{photon}{v1,v2}
+        
+        \fmf{phantom,tension=2}{o1,v1}
+        \fmf{phantom,tension=2}{o2,v2}
+
+\end{fmfgraph*}
+\end{fmffile}
+}
+
+&{\!$\begin{aligned}
+P_A-P_D \\
+P_B-P_C
+\end{aligned}$} & 
+{\!$\begin{aligned}
+u &= (P_A - P_D)^2 \\
+&= (P_B - P_C)^2
+\end{aligned}$}\\
+
+\bottomrule
+\end{tabular}
+\end{table}

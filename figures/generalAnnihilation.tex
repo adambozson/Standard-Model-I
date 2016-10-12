@@ -1,0 +1,15 @@
+\unitlength = 1mm
+\begin{fmffile}{generalAnnihilate}
+    \begin{fmfgraph*}(65,20)
+        
+        \fmfleftn{i}{2}
+        \fmfrightn{o}{2}
+        
+        \fmf{fermion,label=\Pfermion}{o1,v1,o2}
+        \fmf{fermion,label=\Pe}{i2,v2,i1}
+        \fmf{photon,label=\Pphoton}{v1,v2}
+        
+        \fmfdot{v1,v2}
+        
+    \end{fmfgraph*}
+\end{fmffile}
