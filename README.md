@@ -1,6 +1,6 @@
 # Standard Model I
 
-These are my notes from the first half of a [course of lectures][course-page] taken Oct–Dec 2015.
+These are my notes from the first half of a [course of lectures][course-page] taken Sep–Dec 2015.
 
 ## Building the notes
 
